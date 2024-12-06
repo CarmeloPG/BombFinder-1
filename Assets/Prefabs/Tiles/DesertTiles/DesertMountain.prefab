@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4788387502433736065
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3112372792937065269}
+    m_Modifications:
+    - target: {fileID: 1558740971366590, guid: 1c1d07a4036f32e4db71385ea172b294, type: 3}
+      propertyPath: m_Name
+      value: DesertMountain
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310005349350690, guid: 1c1d07a4036f32e4db71385ea172b294, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310005349350690, guid: 1c1d07a4036f32e4db71385ea172b294, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310005349350690, guid: 1c1d07a4036f32e4db71385ea172b294, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310005349350690, guid: 1c1d07a4036f32e4db71385ea172b294, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310005349350690, guid: 1c1d07a4036f32e4db71385ea172b294, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310005349350690, guid: 1c1d07a4036f32e4db71385ea172b294, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310005349350690, guid: 1c1d07a4036f32e4db71385ea172b294, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310005349350690, guid: 1c1d07a4036f32e4db71385ea172b294, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310005349350690, guid: 1c1d07a4036f32e4db71385ea172b294, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310005349350690, guid: 1c1d07a4036f32e4db71385ea172b294, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1c1d07a4036f32e4db71385ea172b294, type: 3}
+--- !u!1 &4789237874649069771 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1424317291588938, guid: 1c1d07a4036f32e4db71385ea172b294,
+    type: 3}
+  m_PrefabInstance: {fileID: 4788387502433736065}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4790856923126196387 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4310005349350690, guid: 1c1d07a4036f32e4db71385ea172b294,
+    type: 3}
+  m_PrefabInstance: {fileID: 4788387502433736065}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8971020361727776287
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2371137040752174681, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_Name
+      value: DesertMountain
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256598602536148297, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: stepSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4af408a7f4a783d499eceda413dafadc, type: 3}
+    - target: {fileID: 8256598602536148297, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: bombsAround.Array.data[0]
+      value: 
+      objectReference: {fileID: 4789237874649069771}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 4790856923126196387}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4925883e36f7f114cacfa721b61bc48e, type: 3}
+--- !u!4 &3112372792937065269 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8971020361727776287}
+  m_PrefabAsset: {fileID: 0}

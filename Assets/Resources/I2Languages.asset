@@ -1,0 +1,1717 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0b0c553be8edd4682e9180fdd13e37, type: 3}
+  m_Name: I2Languages
+  m_EditorClassIdentifier: 
+  mSource:
+    UserAgreesToHaveItOnTheScene: 0
+    UserAgreesToHaveItInsideThePluginsFolder: 0
+    GoogleLiveSyncIsUptoDate: 1
+    mTerms:
+    - Term: Label_Accept
+      TermType: 0
+      Description: 
+      Languages:
+      - Accept
+      - Aceptar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_AlarmButton
+      TermType: 0
+      Description: 
+      Languages:
+      - Alarm
+      - Alarma
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_ButtonRecordOn
+      TermType: 0
+      Description: 
+      Languages:
+      - Recording
+      - Grabando
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Cancel
+      TermType: 0
+      Description: 
+      Languages:
+      - Cancel
+      - Cancelar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Days
+      TermType: 0
+      Description: 
+      Languages:
+      - DAYS
+      - "D\xCDAS"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_DeleteButton
+      TermType: 0
+      Description: 
+      Languages:
+      - Delete
+      - Borrar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_EnglishButton
+      TermType: 0
+      Description: 
+      Languages:
+      - English
+      - English
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_FrenchButton
+      TermType: 0
+      Description: 
+      Languages:
+      - "Fran\xE7ais"
+      - "Fran\xE7ais"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Friday
+      TermType: 0
+      Description: 
+      Languages:
+      - F
+      - V
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_HindiButton
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0939\u093F\u0902\u0926\u0940"
+      - "\u0939\u093F\u0902\u0926\u0940"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Hours
+      TermType: 0
+      Description: 
+      Languages:
+      - HOURS
+      - HORAS
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_LanguageButton
+      TermType: 0
+      Description: 
+      Languages:
+      - Language
+      - Idioma
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Minutes
+      TermType: 0
+      Description: 
+      Languages:
+      - MINUTES
+      - MINUTOS
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Monday
+      TermType: 0
+      Description: 
+      Languages:
+      - M
+      - L
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Play
+      TermType: 0
+      Description: 
+      Languages:
+      - Play
+      - Jugar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_PortugueseButton
+      TermType: 0
+      Description: 
+      Languages:
+      - Portuguese
+      - "Portugu\xEAs"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_RateButton
+      TermType: 0
+      Description: 
+      Languages:
+      - Rate
+      - Valorar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: BricksInfoText
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Move the cloud to do the ball bounces and hits the bricks . When a brick
+        within a piece of furniture is broken the piece of furniture is placed in
+        its place.
+
+        Color proression of a brick before break:'
+      - "Mueve la nube para  hacer que la bola rebote y golpee los ladrillos. Cuando
+        rompes un ladrillo que contiene un mueble el mueble se coloca en su sitio.\nProgresi\xF3n
+        de colores de un ladrillo antes de romperse:"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Or
+      TermType: 0
+      Description: 
+      Languages:
+      - Or
+      - o
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Saturday
+      TermType: 0
+      Description: 
+      Languages:
+      - S
+      - S
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_ShareButton
+      TermType: 0
+      Description: 
+      Languages:
+      - Share
+      - Compartir
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_SpaninsButton
+      TermType: 0
+      Description: 
+      Languages:
+      - "Espa\xF1ol"
+      - "Espa\xF1ol"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Sunday
+      TermType: 0
+      Description: 
+      Languages:
+      - S
+      - D
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Thursday
+      TermType: 0
+      Description: 
+      Languages:
+      - T
+      - J
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Tuesday
+      TermType: 0
+      Description: 
+      Languages:
+      - T
+      - M
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Wednesday
+      TermType: 0
+      Description: 
+      Languages:
+      - W
+      - X
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_AlarmDisabled
+      TermType: 0
+      Description: 
+      Languages:
+      - Enable reminder
+      - Activar recordatorio
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_AlarmEnabled
+      TermType: 0
+      Description: 
+      Languages:
+      - Disable reminder
+      - Desactivar recordatorio
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_AudioSavedFail
+      TermType: 0
+      Description: 
+      Languages:
+      - The file could not be saved. Check that you have enough space and try again.
+      - El archivo no se ha podido guardar. Comprueba que tienes espacio suficiente
+        y vuelve a intentarlo.
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_AudioSavedOK
+      TermType: 0
+      Description: 
+      Languages:
+      - The file has been added to play list.
+      - "El archivo se ha a\xF1adido a la lista de reproducci\xF3n."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_AutorizationMicDenied
+      TermType: 0
+      Description: 
+      Languages:
+      - You must allow the use of the microphone to record.
+      - "Debes permitir el uso del micr\xF3fono para grabar."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_ClockWindow
+      TermType: 0
+      Description: 
+      Languages:
+      - Msg_ClockWindow
+      - Msg_ClockWindow
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_Delete
+      TermType: 0
+      Description: 
+      Languages:
+      - The file has been deleted.
+      - El archivo ha sido borrado.
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_DeleteError
+      TermType: 0
+      Description: 
+      Languages:
+      - The built in ASMR cannot be removed.
+      - Los ASMR incorporados no se pueden borrar.
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_DownloadAudioFail
+      TermType: 0
+      Description: 
+      Languages:
+      - Audio not found.
+      - No se encuentra el audio.
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_FileNotFound
+      TermType: 0
+      Description: 
+      Languages:
+      - 'ERROR: File not found.'
+      - 'ERROR: No se encuentra el archivo.'
+      Flags: 0000
+      Languages_Touch: []
+    - Term: EndGame
+      TermType: 0
+      Description: 
+      Languages:
+      - End play
+      - Terminar juego
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_IsRated
+      TermType: 0
+      Description: 
+      Languages:
+      - You have already rated this application.
+      - "Ya has valorado esta aplicaci\xF3n."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_Loading
+      TermType: 0
+      Description: 
+      Languages:
+      - Loading...
+      - Cargando...
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_NetError
+      TermType: 0
+      Description: 
+      Languages:
+      - You need to be conected  to the Internet to use this application.
+      - "Necesitas estar conectado a Internet para utilizar esta aplicaci\xF3n."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_Pause
+      TermType: 0
+      Description: 
+      Languages:
+      - Press "P" to continue
+      - Pulsa "P" para continuar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_Rate
+      TermType: 0
+      Description: 
+      Languages:
+      - If you enjoy using Baby ASMR would you mind taking a moment to rate it? It
+        wont take more than a minute. Thanks for your support.
+      - "Si te gusta Baby ASMR deber\xEDas darte un momento para valorarla. No te
+        llevar\xE1 mas de un minuto. Gracias por tu apoyo."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_ReminderDisabled
+      TermType: 0
+      Description: 
+      Languages:
+      - Reminder disabled
+      - Recordatorio desactivado
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_ReminderEnabled
+      TermType: 0
+      Description: 
+      Languages:
+      - ReminderEnabled
+      - Recordatorio activado
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_SaveInputField
+      TermType: 0
+      Description: 
+      Languages:
+      - Name...
+      - Nombre...
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_SaveWindow
+      TermType: 0
+      Description: 
+      Languages:
+      - Save message
+      - Save message
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_ShareError
+      TermType: 0
+      Description: 
+      Languages:
+      - The built in ASMR cannot be shared.
+      - Los ASMR incorporados no se pueden compartir.
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_ShowingOff
+      TermType: 0
+      Description: 
+      Languages:
+      - Showing off
+      - "Presentaci\xF3n interrumpida"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_ShowingOn
+      TermType: 0
+      Description: 
+      Languages:
+      - Showing on
+      - "Presentaci\xF3n iniciada"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_StartRecording
+      TermType: 0
+      Description: 
+      Languages:
+      - Start recording
+      - "Grabaci\xF3n iniciada"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Time
+      TermType: 0
+      Description: 
+      Languages:
+      - Time
+      - Tiempo
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_TimerOff
+      TermType: 0
+      Description: 
+      Languages:
+      - Timer off
+      - Temporizador desactivado
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_TimerOn
+      TermType: 0
+      Description: 
+      Languages:
+      - Timer on
+      - Temporizador activado
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Title_AudioSaved
+      TermType: 0
+      Description: 
+      Languages:
+      - Audio saved
+      - Audio guradado
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Title_AutorizationMicDenied
+      TermType: 0
+      Description: 
+      Languages:
+      - Access denied
+      - Acceso denegado
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Title_ClockAndWeekWindow
+      TermType: 0
+      Description: 
+      Languages:
+      - Alarm
+      - Alarma
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Title_Delete
+      TermType: 0
+      Description: 
+      Languages:
+      - Delete
+      - Borrar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Title_DownloadAudioFail
+      TermType: 0
+      Description: 
+      Languages:
+      - Download error
+      - Error de descarga
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Title_LanguageWindow
+      TermType: 0
+      Description: 
+      Languages:
+      - Language
+      - Idioma
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Title_LoadingAudio
+      TermType: 0
+      Description: 
+      Languages:
+      - Loading audio
+      - Cargando audio
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Title_NetError
+      TermType: 0
+      Description: 
+      Languages:
+      - No Internet conection
+      - "Sin conexi\xF3n a Internet"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Title_Options
+      TermType: 0
+      Description: 
+      Languages:
+      - Options
+      - Opciones
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Title_ProgressWindow
+      TermType: 0
+      Description: 
+      Languages:
+      - Saving audio
+      - Guardondo audio
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Title_Rate
+      TermType: 0
+      Description: 
+      Languages:
+      - Rate
+      - Valorar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Title_SaveWindow
+      TermType: 0
+      Description: 
+      Languages:
+      - Save
+      - Guardar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Title_SavingProgress
+      TermType: 0
+      Description: 
+      Languages:
+      - Saving audio
+      - Guardando audio
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Title_Share
+      TermType: 0
+      Description: 
+      Languages:
+      - Share
+      - Compartir
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Title_ShowingWindow
+      TermType: 0
+      Description: 
+      Languages:
+      - Showing
+      - "Presentaci\xF3n"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Title_TimerWindow
+      TermType: 0
+      Description: 
+      Languages:
+      - Timer
+      - Temporizador
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Title_ClockWindow
+      TermType: 0
+      Description: 
+      Languages:
+      - Timer
+      - Temporizador
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_ClockAndWeekWindowOff
+      TermType: 0
+      Description: 
+      Languages:
+      - Msg_ClockAndWeekWindowOff
+      - Msg_ClockAndWeekWindowOff
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Volume
+      TermType: 0
+      Description: 
+      Languages:
+      - Volume
+      - Volumen
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Title_Settings
+      TermType: 0
+      Description: 
+      Languages:
+      - Settings
+      - Ajustes
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Music
+      TermType: 0
+      Description: 
+      Languages:
+      - Music
+      - "M\xFAsica"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Effets
+      TermType: 0
+      Description: 
+      Languages:
+      - Effects
+      - Efectos
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_All
+      TermType: 0
+      Description: 
+      Languages:
+      - All
+      - Todo
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Audio
+      TermType: 0
+      Description: 
+      Languages:
+      - Audio
+      - Audio
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Title_ListWindow
+      TermType: 0
+      Description: 
+      Languages:
+      - List window
+      - List window
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Abrir
+      TermType: 0
+      Description: 
+      Languages:
+      - Open
+      - Abrir
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Completada
+      TermType: 0
+      Description: 
+      Languages:
+      - ' is completed.'
+      - ' completada'
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Continuar
+      TermType: 0
+      Description: 
+      Languages:
+      - Continue
+      - Continuar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Desbloquear
+      TermType: 0
+      Description: 
+      Languages:
+      - To unlock
+      - Para desbloquear
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Gratis
+      TermType: 0
+      Description: 
+      Languages:
+      - Free
+      - "\xA1Gratis!"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: BricksInfoText_2
+      TermType: 0
+      Description: 
+      Languages:
+      - 'The game ends when all pieces of furniture are in their places (you win)
+        or the ball falls to the floor (you lose.
+
+        Enjoy!'
+      - "El juego termina cuando colocas todos los muebles en su sitio (ganas) o
+        cuando la bola cae al suelo (pierdes).\n\xA1Disfruta!"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: HasGanado
+      TermType: 0
+      Description: 
+      Languages:
+      - You have earned
+      - Has ganado
+      Flags: 0000
+      Languages_Touch: []
+    - Term: IrMapa
+      TermType: 0
+      Description: 
+      Languages:
+      - Go to map
+      - Ir al mapa
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_LoadCloud
+      TermType: 0
+      Description: 
+      Languages:
+      - Continue game
+      - Continuar partida
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_LoadLocal
+      TermType: 0
+      Description: 
+      Languages:
+      - Start new game
+      - Comenzar partida nueva
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Mantenimiento
+      TermType: 0
+      Description: 
+      Languages:
+      - Maintenance
+      - Mantenimiento
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Marketing
+      TermType: 0
+      Description: 
+      Languages:
+      - Create a marketing campaing to attract more customers.
+      - "Crea una campa\xF1a de marketing para atraer m\xE1s clientes."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: MaxMoneyReached
+      TermType: 0
+      Description: 
+      Languages:
+      - Max money reached
+      - Maximo de dinero ganado
+      Flags: 0000
+      Languages_Touch: []
+    - Term: MaxTimeOfflLineExced
+      TermType: 0
+      Description: 
+      Languages:
+      - Your parks have closed
+      - Tus parques han cerrado
+      Flags: 0000
+      Languages_Touch: []
+    - Term: MiraAnuncio
+      TermType: 0
+      Description: 
+      Languages:
+      - Watch a video
+      - Mira un video
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Misiones
+      TermType: 0
+      Description: 
+      Languages:
+      - Jobs
+      - Misiones
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Movil
+      TermType: 0
+      Description: 
+      Languages:
+      - Phone
+      - "M\xF3vil"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Load
+      TermType: 0
+      Description: 
+      Languages:
+      - Load game
+      - Cargar partida
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Loading
+      TermType: 0
+      Description: 
+      Languages:
+      - Loading...
+      - Cargando...
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Save
+      TermType: 0
+      Description: 
+      Languages:
+      - Save game
+      - Guardar partida
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_SaveCloud
+      TermType: 0
+      Description: 
+      Languages:
+      - Save on cloud
+      - Guardar en la nube
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_OtherSettings
+      TermType: 0
+      Description: 
+      Languages:
+      - Label_OtherSettings
+      - Label_OtherSettings
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Title_Shop
+      TermType: 0
+      Description: 
+      Languages:
+      - Shop
+      - Tienda
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Claim
+      TermType: 0
+      Description: 
+      Languages:
+      - Claim
+      - Reclamar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Label_Claimed
+      TermType: 0
+      Description: 
+      Languages:
+      - Claimed
+      - Reclamada
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Previous
+      TermType: 0
+      Description: 
+      Languages:
+      - Prev
+      - Anterior
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Next
+      TermType: 0
+      Description: 
+      Languages:
+      - Play next level
+      - Jugar siguiente nivel
+      Flags: 0000
+      Languages_Touch: []
+    - Term: HowToPlay
+      TermType: 0
+      Description: 
+      Languages:
+      - How to play
+      - Como jugar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Back
+      TermType: 0
+      Description: 
+      Languages:
+      - Back to menu
+      - "Volver al men\xFA"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Boston
+      TermType: 0
+      Description: 
+      Languages:
+      - Boston
+      - Boston
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Detroit
+      TermType: 0
+      Description: 
+      Languages:
+      - Detroit
+      - Detroit
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dallas
+      TermType: 0
+      Description: 
+      Languages:
+      - Dallas
+      - Dallas
+      Flags: 0000
+      Languages_Touch: []
+    - Term: SanFrancisco
+      TermType: 0
+      Description: 
+      Languages:
+      - San Francisco
+      - San Francisco
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Chicago
+      TermType: 0
+      Description: 
+      Languages:
+      - Chicago
+      - Chicago
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Houston
+      TermType: 0
+      Description: 
+      Languages:
+      - Houston
+      - Houston
+      Flags: 0000
+      Languages_Touch: []
+    - Term: LasVegas
+      TermType: 0
+      Description: 
+      Languages:
+      - Las Vegas
+      - Las Vegas
+      Flags: 0000
+      Languages_Touch: []
+    - Term: PowerUp
+      TermType: 0
+      Description: 
+      Languages:
+      - Power up
+      - Mejoras
+      Flags: 0000
+      Languages_Touch: []
+    - Term: BigCloud
+      TermType: 0
+      Description: 
+      Languages:
+      - Big cloud
+      - Nube grande
+      Flags: 0000
+      Languages_Touch: []
+    - Term: HeavyBall
+      TermType: 0
+      Description: 
+      Languages:
+      - Heavy ball
+      - Bola pesada
+      Flags: 0000
+      Languages_Touch: []
+    - Term: TimeReward
+      TermType: 0
+      Description: 
+      Languages:
+      - Time reward
+      - Recompensa por tiempo
+      Flags: 0000
+      Languages_Touch: []
+    - Term: LevelSuccess
+      TermType: 0
+      Description: 
+      Languages:
+      - Level success
+      - Nivel superado
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Reward
+      TermType: 0
+      Description: 
+      Languages:
+      - Reward
+      - Recompensa
+      Flags: 0000
+      Languages_Touch: []
+    - Term: PalyAgain
+      TermType: 0
+      Description: 
+      Languages:
+      - Play again
+      - Jugar de nuevo
+      Flags: 0000
+      Languages_Touch: []
+    - Term: GetReward
+      TermType: 0
+      Description: 
+      Languages:
+      - Get reward
+      - Obtener recompensa
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ResetBall
+      TermType: 0
+      Description: 
+      Languages:
+      - Reset ball
+      - Reiniciar bola
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ResetLevel
+      TermType: 0
+      Description: 
+      Languages:
+      - Reset level
+      - Reiniciar nivel
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Clouds
+      TermType: 0
+      Description: 
+      Languages:
+      - Clouds
+      - Nubes
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Balls
+      TermType: 0
+      Description: 
+      Languages:
+      - Balls
+      - Bolas
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Inventory
+      TermType: 0
+      Description: 
+      Languages:
+      - Inventory
+      - Inventario
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Buy
+      TermType: 0
+      Description: 
+      Languages:
+      - Buy
+      - Comprar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ToEquip
+      TermType: 0
+      Description: 
+      Languages:
+      - Select
+      - Seleccionar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Selected
+      TermType: 0
+      Description: 
+      Languages:
+      - Selected
+      - Seleccionado
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Title_transactionError
+      TermType: 0
+      Description: 
+      Languages:
+      - Transaction error
+      - "Error de transacci\xF3n"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_TransactionError
+      TermType: 0
+      Description: 
+      Languages:
+      - Transaction error
+      - "Error de transacci\xF3n"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Select
+      TermType: 0
+      Description: 
+      Languages:
+      - Select
+      - Seleccionar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_MoveCloud
+      TermType: 0
+      Description: 
+      Languages:
+      - To move cloud
+      - Mover nube
+      Flags: 0000
+      Languages_Touch: []
+    - Term: NoneSelected
+      TermType: 0
+      Description: 
+      Languages:
+      - None to show
+      - Nada que mostrar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Credits
+      TermType: 0
+      Description: 
+      Languages:
+      - Credits
+      - "Cr\xE9ditos"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: CoinsCollected
+      TermType: 0
+      Description: 
+      Languages:
+      - Coins collected
+      - Monedas recogidas
+      Flags: 0000
+      Languages_Touch: []
+    - Term: AtomBalll
+      TermType: 0
+      Description: 
+      Languages:
+      - Atom
+      - "\xC1tomo"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: BasketBall
+      TermType: 0
+      Description: 
+      Languages:
+      - Basket ball
+      - Baloncesto
+      Flags: 0000
+      Languages_Touch: []
+    - Term: EyeBall
+      TermType: 0
+      Description: 
+      Languages:
+      - Eye
+      - Ojo
+      Flags: 0000
+      Languages_Touch: []
+    - Term: MetalBall
+      TermType: 0
+      Description: 
+      Languages:
+      - Metallic
+      - "Met\xE1lica"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Poolball
+      TermType: 0
+      Description: 
+      Languages:
+      - Pool
+      - Billar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: SorccerBall
+      TermType: 0
+      Description: 
+      Languages:
+      - Soccer
+      - "F\xFAtbol"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: TennisBall
+      TermType: 0
+      Description: 
+      Languages:
+      - Tennis
+      - Tenis
+      Flags: 0000
+      Languages_Touch: []
+    - Term: WoodenBall
+      TermType: 0
+      Description: 
+      Languages:
+      - Wood
+      - Madera
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Cumulonimbus
+      TermType: 0
+      Description: 
+      Languages:
+      - Cumulonimbus
+      - Cumulonimbo
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Cumulus
+      TermType: 0
+      Description: 
+      Languages:
+      - Cumulus
+      - "C\xFAmulo"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Stratocumulus
+      TermType: 0
+      Description: 
+      Languages:
+      - Stratocumulus
+      - "Estratoc\xFAmulo"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Swirls
+      TermType: 0
+      Description: 
+      Languages:
+      - Cirrostratus
+      - Cirroestrato
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Stratus
+      TermType: 0
+      Description: 
+      Languages:
+      - Stratus
+      - Estrato
+      Flags: 0000
+      Languages_Touch: []
+    - Term: AddBlockDetected
+      TermType: 0
+      Description: 
+      Languages:
+      - Title
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: AdblockDetected
+      TermType: 0
+      Description: 
+      Languages:
+      - Adblock detected
+      - Adblock detectado
+      Flags: 0000
+      Languages_Touch: []
+    - Term: AdblockMessage
+      TermType: 0
+      Description: 
+      Languages:
+      - It looks like you have an active adblock. At  RTN we uses the adversitng
+        as a financing way to be able to offer you free games. Our advesiting is
+        friendly and never interferes in the game. Please, disable the adblock and
+        refresh the page. Thanks for collaboratin with our grow.
+      - "Parece que tienes un adblock activo. En RTN utilizamos la publicidad como
+        via de finaciaci\xF3n para poder ofrecerte juegos gratuitos. Nuestra publicidad
+        es amigable y nunca interfer\xEDa en el juego. Por favor, desactiva el adblock
+        y actualiza la p\xE1gina.  Gracias por colaborar con nuestro crecimiento."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: DuplicateReward
+      TermType: 0
+      Description: 
+      Languages:
+      - Reward x2
+      - Monedas x 2
+      Flags: 0000
+      Languages_Touch: []
+    - Term: MoveAvatarText
+      TermType: 0
+      Description: 
+      Languages:
+      - To move avatar
+      - Mover avatar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Empty
+      TermType: 0
+      Description: 
+      Languages:
+      - Empty
+      - "Vac\xEDo"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Level
+      TermType: 0
+      Description: 
+      Languages:
+      - Level
+      - Nivel
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Spin
+      TermType: 0
+      Description: 
+      Languages:
+      - Spin
+      - Girar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: SpinRoulette
+      TermType: 0
+      Description: 
+      Languages:
+      - Fortune spin wheel
+      - Ruleta de la fortuna
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Roulette
+      TermType: 0
+      Description: 
+      Languages:
+      - Fortune spin weel
+      - Ruleta de la suerte
+      Flags: 0000
+      Languages_Touch: []
+    - Term: LevelFailed
+      TermType: 0
+      Description: 
+      Languages:
+      - Level failed
+      - Nivel fallado
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Easy
+      TermType: 0
+      Description: 
+      Languages:
+      - Easy
+      - "F\xE1cil"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Normal
+      TermType: 0
+      Description: 
+      Languages:
+      - Normal
+      - Normal
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Hard
+      TermType: 0
+      Description: 
+      Languages:
+      - Hard
+      - Dificil
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ChallengeScreen
+      TermType: 0
+      Description: 
+      Languages:
+      - Daily challenge
+      - Reto diario
+      Flags: 0000
+      Languages_Touch: []
+    - Term: PlayLevel
+      TermType: 0
+      Description: 
+      Languages:
+      - Play arcade
+      - Jugar arcade
+      Flags: 0000
+      Languages_Touch: []
+    - Term: PlayChallenge
+      TermType: 0
+      Description: 
+      Languages:
+      - Daily challenge
+      - Reto diario
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ExposeTile
+      TermType: 0
+      Description: 
+      Languages:
+      - To expose tile
+      - Descubrir baldosa
+      Flags: 0000
+      Languages_Touch: []
+    - Term: MarkTile
+      TermType: 0
+      Description: 
+      Languages:
+      - To mark tile
+      - Marcar baldosa
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_Tile
+      TermType: 0
+      Description: 
+      Languages:
+      - You must be on a tile to expose or mark it. Be careful, you may expose a
+        marked tile so, if it has a bomb, all bombs on the field will explode.
+      - "Debes estar sobre una baldosa para descubrirla o marcarla. Ten cuidado,
+        puedes descubrir una baldosa que est\xE1 marcada y si tiene bomba, explotar\xE1n
+        todas las bombas del campo."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_EndLevel
+      TermType: 0
+      Description: 
+      Languages:
+      - A level ends when the last bomb mark is spent. At that moment, all unmarked
+        tiles will expose. If any unmarked tile has a bomb, all bombs on the field
+        will explode.
+      - "Un nivel termina cuando se gasta la \xFAltima marca de bomba. En ese momento
+        se descubrir\xE1n todas las baldosas que no est\xE9n marcadas, si alguna
+        baldosa no marcada tiene bomba, explotar\xE1n todas las minas del campo."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_MobileBomb
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Mobile bombs
+
+
+        Stating at level 16 mobile bombs apears on the field.
+        If a mobile bomb hits the avatar, all bombs on the field will explode. The
+        frecuency with which mobile bombs apear increases with level.'
+      - "Bombas m\xF3viles:\n\nA partir del nivel 16 aparecen bombas m\xF3viles en
+        el campo. Si una bomba m\xF3vil choca contra el avatar, explotar\xE1n todas
+        las bombas del campo. La frecuencia con la que aparecen bombas m\xF3viles
+        aumenta con el nivel. "
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Mark
+      TermType: 0
+      Description: 
+      Languages:
+      - To mark
+      - Marcar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Bombs
+      TermType: 0
+      Description: 
+      Languages:
+      - bombs
+      - bombas
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dificulty
+      TermType: 0
+      Description: 
+      Languages:
+      - Dificulty
+      - Dificultad
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Pause
+      TermType: 0
+      Description: 
+      Languages:
+      - Pause
+      - Pausa
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ChallengeOvercome
+      TermType: 0
+      Description: 
+      Languages:
+      - Challenge overcome
+      - Reto superado
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ChallengeFailed
+      TermType: 0
+      Description: 
+      Languages:
+      - ChallengeFailed
+      - Reto fallado
+      Flags: 0000
+      Languages_Touch: []
+    - Term: CompetitionMode
+      TermType: 0
+      Description: 
+      Languages:
+      - Competition
+      - "Competici\xF3n"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: SelectDificulty
+      TermType: 0
+      Description: 
+      Languages:
+      - Select difficulty
+      - Selecciona dificultad
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Begginer
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Beginner
+
+        8 x 8'
+      - 'Principiante
+
+        8 x 8'
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Medium
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Medium
+
+        12 x 12'
+      - 'Medio
+
+        12 x 12'
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Expert
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Expert
+
+        16 x 16'
+      - 'Experto
+
+        16 x 16'
+      Flags: 0000
+      Languages_Touch: []
+    - Term: GoHome
+      TermType: 0
+      Description: 
+      Languages:
+      - Go home
+      - "Ir al men\xFA"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Replay
+      TermType: 0
+      Description: 
+      Languages:
+      - Replay
+      - Volver a jugar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: GuestUser
+      TermType: 0
+      Description: 
+      Languages:
+      - Guest user
+      - Invitado
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Msg_GuestUser
+      TermType: 0
+      Description: 
+      Languages:
+      - 'You are not logged in Crazy Games. The guest players cannot play the competition
+        mode. If you want to play the competition mode, you must be logged in Crazy
+        Games.
+
+'
+      - "No has iniciado sesi\xF3n en Crazy Games. Los jugadores invitados no pueden
+        jugar el modo competitivo. Si quieres jugar el modo competitivo, inicia sesi\xF3n
+        en Carzy Games o crea una cuenta."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Rank
+      TermType: 0
+      Description: 
+      Languages:
+      - Rank
+      - "Posici\xF3n"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Name
+      TermType: 0
+      Description: 
+      Languages:
+      - Name
+      - Nombre
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ViewScores
+      TermType: 0
+      Description: 
+      Languages:
+      - View scores
+      - "Ver clasificaci\xF3n"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Ranking
+      TermType: 0
+      Description: 
+      Languages:
+      - Ranking
+      - "Clasificaci\xF3n"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ChangeView
+      TermType: 0
+      Description: 
+      Languages:
+      - Change view
+      - Camibar vista
+      Flags: 0000
+      Languages_Touch: []
+    - Term: AirView
+      TermType: 0
+      Description: 
+      Languages:
+      - Air view
+      - "Vista a\xE9rea"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ChangeCamera
+      TermType: 0
+      Description: 
+      Languages:
+      - Change camera
+      - "Cambiar c\xE1mara"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Shift
+      TermType: 0
+      Description: 
+      Languages:
+      - Shift
+      - "May\xFAs"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Run
+      TermType: 0
+      Description: 
+      Languages:
+      - Run
+      - Correr
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Identifier_DisableBomb
+      TermType: 0
+      Description: 
+      Languages:
+      - Mark bomb
+      - Marcar bomba
+      Flags: 0000
+      Languages_Touch: []
+    - Term: GetRe
+      TermType: 0
+      Description: 
+      Languages:
+      - Spin roulette
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: mus
+      TermType: 0
+      Description: 
+      Languages:
+      - Toggle
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: sound
+      TermType: 0
+      Description: 
+      Languages:
+      - Sound
+      - Sonido
+      Flags: 0000
+      Languages_Touch: []
+    - Term: GameExplanation
+      TermType: 0
+      Description: 
+      Languages:
+      - The game consists of marking all the bombs on a field of hexagonal tiles.
+        Some tiles have a number, which indicates the number of bombs on the surrounding
+        tiles.
+      - "El juego consiste en marcar todas las bombas de un campo de baldosas hexagonales.
+        Algunas baldosas tienen un n\xFAmero, el cual indica la cantidad de bombas
+        que hay en las baldosas circundantes."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: MuteMusic
+      TermType: 0
+      Description: 
+      Languages:
+      - Music
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    CaseInsensitiveTerms: 0
+    OnMissingTranslation: 3
+    mTerm_AppName: 
+    mLanguages:
+    - Name: English
+      Code: en
+      Flags: 0
+    - Name: Spanish
+      Code: es
+      Flags: 0
+    IgnoreDeviceLanguage: 1
+    _AllowUnloadingLanguages: 0
+    Google_WebServiceURL: 
+    Google_SpreadsheetKey: 
+    Google_SpreadsheetName: 
+    Google_LastUpdatedVersion: 
+    Google_Password: change_this
+    GoogleUpdateFrequency: 3
+    GoogleInEditorCheckFrequency: 2
+    GoogleUpdateSynchronization: 1
+    GoogleUpdateDelay: 0
+    Assets: []
+    Spreadsheet_LocalFileName: D:/3GM/Idle park/Idle Park Empire/Assets/I2/Localization.txt
+    Spreadsheet_LocalCSVSeparator: ','
+    Spreadsheet_LocalCSVEncoding: utf-8
+    Spreadsheet_SpecializationAsRows: 1

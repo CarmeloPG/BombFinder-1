@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe2833f5dcde3c44bcfbff2d7e672ff, type: 3}
+  m_Name: ForestTiles
+  m_EditorClassIdentifier: 
+  tilePrefabs:
+  - {fileID: 3309327725046808322, guid: cdbe3b10596a144459f768fa320a7a5c, type: 3}
+  - {fileID: 3434756223226949038, guid: d9cc0c3b24a93794c82f44c290ddef39, type: 3}
+  - {fileID: 8661675953399797221, guid: ba5f82505a6d71946a47a29dc53eba4d, type: 3}
+  - {fileID: 5332493877474801385, guid: fc413e93982b5ef4eae93e4d1a533d9c, type: 3}
+  - {fileID: 4232374485002056056, guid: 1fa078b1588eeb94598c20319223cdf5, type: 3}

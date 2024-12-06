@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe2833f5dcde3c44bcfbff2d7e672ff, type: 3}
+  m_Name: DesertTiles
+  m_EditorClassIdentifier: 
+  tilePrefabs:
+  - {fileID: 2822856263473218053, guid: d39bf559660aa0743859be0cf46a8c1d, type: 3}
+  - {fileID: 1074710846077389654, guid: 6e3404de7da567a4b933cb3e5ea8f6e0, type: 3}
+  - {fileID: 763351178422913506, guid: 5a96ab3434404764d8c06ab7821cd6f0, type: 3}
+  - {fileID: 6613528718159876917, guid: f7ae56d8bdc3d0145a8814ab5b502ea8, type: 3}
+  - {fileID: 8806779495164117734, guid: 451eccfc7849b6f41b6873bf4b3eefaa, type: 3}
+  - {fileID: 1946616000678283477, guid: 847e346cd9d9e48438f73e6e2fc2b301, type: 3}

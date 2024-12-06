@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6881701459364793924
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3408251406001334657}
+    m_Modifications:
+    - target: {fileID: 1323375312248932, guid: 60e77467a81160140b6dd83e291db008, type: 3}
+      propertyPath: m_Name
+      value: DesertSkulRock
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191738363515258, guid: 60e77467a81160140b6dd83e291db008, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191738363515258, guid: 60e77467a81160140b6dd83e291db008, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191738363515258, guid: 60e77467a81160140b6dd83e291db008, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191738363515258, guid: 60e77467a81160140b6dd83e291db008, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191738363515258, guid: 60e77467a81160140b6dd83e291db008, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191738363515258, guid: 60e77467a81160140b6dd83e291db008, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191738363515258, guid: 60e77467a81160140b6dd83e291db008, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191738363515258, guid: 60e77467a81160140b6dd83e291db008, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191738363515258, guid: 60e77467a81160140b6dd83e291db008, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191738363515258, guid: 60e77467a81160140b6dd83e291db008, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 60e77467a81160140b6dd83e291db008, type: 3}
+--- !u!1 &6882979262594252188 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1678059844842456, guid: 60e77467a81160140b6dd83e291db008,
+    type: 3}
+  m_PrefabInstance: {fileID: 6881701459364793924}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6885532522342506302 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4191738363515258, guid: 60e77467a81160140b6dd83e291db008,
+    type: 3}
+  m_PrefabInstance: {fileID: 6881701459364793924}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8647653958248125611
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2371137040752174681, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_Name
+      value: DesertSkulRock
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256598602536148297, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: stepSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4af408a7f4a783d499eceda413dafadc, type: 3}
+    - target: {fileID: 8256598602536148297, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      propertyPath: bombsAround.Array.data[0]
+      value: 
+      objectReference: {fileID: 6882979262594252188}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+        type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 6885532522342506302}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4925883e36f7f114cacfa721b61bc48e, type: 3}
+--- !u!4 &3408251406001334657 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6291011830153100586, guid: 4925883e36f7f114cacfa721b61bc48e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8647653958248125611}
+  m_PrefabAsset: {fileID: 0}

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe2833f5dcde3c44bcfbff2d7e672ff, type: 3}
+  m_Name: SnowTiles
+  m_EditorClassIdentifier: 
+  tilePrefabs:
+  - {fileID: 5246265180215770123, guid: 6feaf87293c2ec745b5fc97f82818f97, type: 3}
+  - {fileID: 8189921251381814364, guid: 2af161a597b361f4f9147013b902c0bc, type: 3}
+  - {fileID: 7085506173861756476, guid: 94cfd53875215334dab10c9b23c5a7ca, type: 3}
+  - {fileID: 5974034136039274410, guid: c2688b7cfbd085548b068c7d3fe48dd3, type: 3}
+  - {fileID: 9126979125858257704, guid: 34ad74789aca81f478a85b1cf048f442, type: 3}
