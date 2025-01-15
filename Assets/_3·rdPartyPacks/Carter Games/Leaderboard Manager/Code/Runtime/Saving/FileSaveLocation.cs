@@ -61,15 +61,16 @@ namespace CarterGames.Assets.LeaderboardManager.Save
 #endif
             }
         }
-        
+
         /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
         |   ISaveLocation Methods
-        ───────────────────────────────────────────────────────────────────────────────────────────────────────────── */ 
-        
+        ───────────────────────────────────────────────────────────────────────────────────────────────────────────── */
+
         /// <summary>
         /// Saves the data when called.
         /// </summary>
         /// <param name="json">The json to save.</param>
+        [Obsolete]
         public void Save(string json)
         {
             try

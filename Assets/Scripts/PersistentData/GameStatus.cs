@@ -37,7 +37,7 @@ public class GameStatus {
 		musicMuted = false;
 		effectMuted = false;
 		currentLevel = 1;
-		playerMoney = 1500;
+		playerMoney = 1000;
 		challengeData = new ChallengeData();
 
 		/*lastYearChallenge = now.Year - 1;

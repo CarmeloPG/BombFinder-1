@@ -16,6 +16,7 @@ public struct Constants {
 		i2_term_easy = "Easy",
 		i2_term_normal = "Normal",
 		i2_term_hard = "Hard",
+		i2_term_reward = "Reward",
 		
 		//Tags
 		tag_player = "Player";

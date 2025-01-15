@@ -46,6 +46,9 @@ public class ArcadeScreen : PlayScreen {
     [Tooltip("Increased bomb density per level. When the bombs density is higher than maxBombDensity, it will be set to minBombDensity.")]
     private float deltaBombDensity = .02f;
     [SerializeField]
+    [Tooltip("The level to start to spawn mobile bombs.")]
+    private int spawnEnemiesLevel = 5;
+    [SerializeField]
     [Tooltip("The minimum period, in seconds, to spawn enemies. The minimum period represents the maximum frecuency.")]
     private float minSpawnEnemiesPeriod = 10f;
     [SerializeField]
@@ -75,9 +78,9 @@ public class ArcadeScreen : PlayScreen {
         //The current level.
         currentLevel,
         //Every few leveles a tile is added.
-        addTileLevel,
+        addTileLevel;
         //The level to start to spawn mobile bombs.
-        spawnEnemiesLevel;
+        //spawnEnemiesLevel;
     #endregion
 
     #region Properties
@@ -88,6 +91,15 @@ public class ArcadeScreen : PlayScreen {
         get => currentLevel;
         set => currentLevel = value;
     }
+
+
+    /// <summary>
+    /// The level to start to spawn mobile bombs.
+    /// </summary>
+    public int SpawnEnemiesLevel {
+        get => spawnEnemiesLevel;
+    }
+
     #endregion
 
     #region Events
@@ -107,10 +119,10 @@ public class ArcadeScreen : PlayScreen {
         addTileLevel = Mathf.FloorToInt(
             1 + ((maxBombDensity - minBombDensity) / deltaBombDensity));
 
-        spawnEnemiesLevel = 
-            (maxTilesBySide - minTilesBySide) * addTileLevel;
+        //spawnEnemiesLevel = 
+            //(maxTilesBySide - minTilesBySide) * addTileLevel;
 
-        Debug.Log($"Add tile level: {addTileLevel}. Spawn enemies level {spawnEnemiesLevel}.");
+        Debug.Log($"Add tile level: {addTileLevel}.");
     }
     #endregion
 
@@ -136,7 +148,7 @@ public class ArcadeScreen : PlayScreen {
 
         levelReport.levelPlayed = currentLevel;
         marksCountText.text =
-            Mathf.FloorToInt(BombsCount * powerUpMultiplier).ToString();
+            Mathf.FloorToInt(bombsCount * powerUpMultiplier).ToString();
 
         powerUpShopWindow.Open();
         startlevelInfoBox.ShowInfo(this, false);
@@ -160,7 +172,7 @@ public class ArcadeScreen : PlayScreen {
     /// </summary>
     /// <param name="powerUp">The power up.</param>
     public void UsePowerUp(PlayObject powerUp) {
-        bombsMarkCount = Mathf.FloorToInt(BombsCount * powerUpMultiplier);
+        bombsMarkCount = Mathf.FloorToInt(bombsCount * powerUpMultiplier);
         pause = false;
 
         Destroy(powerUp.gameObject);

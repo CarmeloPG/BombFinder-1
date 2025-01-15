@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whitelistedDomains: []
   pauseGameDuringAd: 1
-  accountAvailableResponse: 0
-  linkAccountResponse: 0
-  getUserResponse: 0
-  authPromptResponse: 0
-  getTokenResponse: 0
+  accountAvailableResponse: 1
+  linkAccountResponse: 1
+  getUserResponse: 2
+  authPromptResponse: 2
+  getTokenResponse: 2
   disableSdkLogs: 0
   disableAdPreviews: 0
   deviceType: 0

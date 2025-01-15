@@ -15,6 +15,8 @@ public class StartlevelInfoBox : MonoBehaviour {
     private TextMeshProUGUI tilesCountText;
     [SerializeField]
 	private TextMeshProUGUI bombsCountText;
+    [SerializeField]
+    private TextMeshProUGUI mobileBombsText;
 
     /*[Header("Screen")]
     [SerializeField]
@@ -41,11 +43,19 @@ public class StartlevelInfoBox : MonoBehaviour {
     #endregion
 
     #region Unity methods
+    private void OnDisable() {
+        if (mobileBombsText.gameObject.activeSelf) {
+            mobileBombsText.gameObject.SetActive(false);
+        }
+    }
     #endregion
 
     #region Public methods
     public void ShowInfo(ArcadeScreen  arcadeScreen, bool show = true) {
         numberLevelText.text = arcadeScreen.CurrentLevel.ToString();
+        
+        mobileBombsText.gameObject.SetActive(
+            arcadeScreen.CurrentLevel == arcadeScreen.SpawnEnemiesLevel);
 
         ShowPlayScreenInfo(arcadeScreen, show);
     }

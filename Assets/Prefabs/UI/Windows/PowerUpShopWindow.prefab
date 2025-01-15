@@ -612,7 +612,7 @@ PrefabInstance:
     - target: {fileID: 2074476566819671142, guid: cc5b84102b78d794781e9d3c86618e86,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.9
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 2074476566819671142, guid: cc5b84102b78d794781e9d3c86618e86,
         type: 3}
@@ -622,11 +622,16 @@ PrefabInstance:
     - target: {fileID: 2074476566819671142, guid: cc5b84102b78d794781e9d3c86618e86,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.7
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 2074476566819671142, guid: cc5b84102b78d794781e9d3c86618e86,
         type: 3}
       propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2074476566819671142, guid: cc5b84102b78d794781e9d3c86618e86,
+        type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2098472544998864120, guid: cc5b84102b78d794781e9d3c86618e86,
@@ -1865,6 +1870,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ViewVideoButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 664729819112166408, guid: 61343e9eebb09954eb18c2093acb833f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 664729819112166410, guid: 61343e9eebb09954eb18c2093acb833f,
         type: 3}

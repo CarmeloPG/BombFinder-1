@@ -759,32 +759,32 @@ PrefabInstance:
     - target: {fileID: 4722517126296704534, guid: 4f32a752a4478f84da043aaca78ea704,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4722517126296704534, guid: 4f32a752a4478f84da043aaca78ea704,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4722517126296704534, guid: 4f32a752a4478f84da043aaca78ea704,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4722517126296704534, guid: 4f32a752a4478f84da043aaca78ea704,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.86
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 4722517126296704534, guid: 4f32a752a4478f84da043aaca78ea704,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.9
+      value: -2.75
       objectReference: {fileID: 0}
     - target: {fileID: 4722517126296704534, guid: 4f32a752a4478f84da043aaca78ea704,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 88.98
+      value: 88.61
       objectReference: {fileID: 0}
     - target: {fileID: 4722517126296704534, guid: 4f32a752a4478f84da043aaca78ea704,
         type: 3}
@@ -820,6 +820,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722517126296704534, guid: 4f32a752a4478f84da043aaca78ea704,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1025,7 +1030,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 16942ff6edc2984408f86d95b9f8d9fe, type: 3}
+  m_Texture: {fileID: 2800000, guid: 6adbf667448cfce4ea2b2cd656e3274b, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1046,8 +1051,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 248442226}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.1, y: 0.2}
-  m_AnchorMax: {x: 0.9, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

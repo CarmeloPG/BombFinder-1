@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioManager: {fileID: 0}
-  maxReward: 10
+  maxReward: 50
   moneyBox: {fileID: 8743303776549094937}
   highLightedMark: {fileID: 4800923533651887213}
   bombMark: {fileID: 4601552311812670365}

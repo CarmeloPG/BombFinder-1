@@ -35,7 +35,7 @@ RectTransform:
   - {fileID: 336093879698592805}
   m_Father: {fileID: 6879967872279900473}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.2, y: 0.87}
+  m_AnchorMin: {x: 0.2, y: 0.9}
   m_AnchorMax: {x: 0.8, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
@@ -202,6 +202,11 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 899286103401605191, guid: 4d36fcbe52456ac4688d6d83326b40f7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1955790371496793961, guid: 4d36fcbe52456ac4688d6d83326b40f7,
         type: 3}
       propertyPath: m_Size
@@ -243,6 +248,11 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3777324292170212270, guid: 4d36fcbe52456ac4688d6d83326b40f7,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4292017919
+      objectReference: {fileID: 0}
     - target: {fileID: 4013968916104780736, guid: 4d36fcbe52456ac4688d6d83326b40f7,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -261,7 +271,7 @@ PrefabInstance:
     - target: {fileID: 4074273851047633751, guid: 4d36fcbe52456ac4688d6d83326b40f7,
         type: 3}
       propertyPath: m_fontSize
-      value: 54.85
+      value: 54.8
       objectReference: {fileID: 0}
     - target: {fileID: 5717500345346124665, guid: 4d36fcbe52456ac4688d6d83326b40f7,
         type: 3}
@@ -286,12 +296,22 @@ PrefabInstance:
     - target: {fileID: 6973116190481778899, guid: 4d36fcbe52456ac4688d6d83326b40f7,
         type: 3}
       propertyPath: m_fontSize
-      value: 54.85
+      value: 54.8
       objectReference: {fileID: 0}
     - target: {fileID: 7042614528457677372, guid: 4d36fcbe52456ac4688d6d83326b40f7,
         type: 3}
       propertyPath: m_Name
       value: LeaderBoardDisplayBegginer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7539171121795087746, guid: 4d36fcbe52456ac4688d6d83326b40f7,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4292017919
+      objectReference: {fileID: 0}
+    - target: {fileID: 8021801389888188817, guid: 4d36fcbe52456ac4688d6d83326b40f7,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4292017919
       objectReference: {fileID: 0}
     - target: {fileID: 8195671338228518267, guid: 4d36fcbe52456ac4688d6d83326b40f7,
         type: 3}
@@ -301,7 +321,7 @@ PrefabInstance:
     - target: {fileID: 8195671338228518267, guid: 4d36fcbe52456ac4688d6d83326b40f7,
         type: 3}
       propertyPath: m_fontSize
-      value: 51.95
+      value: 52
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -535,14 +555,14 @@ PrefabInstance:
     - target: {fileID: 2293933420018242111, guid: 8e245559e42c20b49ab4071343778edc,
         type: 3}
       propertyPath: m_text
-      value: 'Medio
+      value: 'Medium
 
         12 x 12'
       objectReference: {fileID: 0}
     - target: {fileID: 2293933420018242111, guid: 8e245559e42c20b49ab4071343778edc,
         type: 3}
       propertyPath: m_fontSize
-      value: 50
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2293933420018242111, guid: 8e245559e42c20b49ab4071343778edc,
         type: 3}
@@ -766,14 +786,14 @@ PrefabInstance:
     - target: {fileID: 2293933420018242111, guid: 8e245559e42c20b49ab4071343778edc,
         type: 3}
       propertyPath: m_text
-      value: 'Principiante
+      value: 'Beginner
 
         8 x 8'
       objectReference: {fileID: 0}
     - target: {fileID: 2293933420018242111, guid: 8e245559e42c20b49ab4071343778edc,
         type: 3}
       propertyPath: m_fontSize
-      value: 50
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2293933420018242111, guid: 8e245559e42c20b49ab4071343778edc,
         type: 3}
@@ -1184,14 +1204,14 @@ PrefabInstance:
     - target: {fileID: 2293933420018242111, guid: 8e245559e42c20b49ab4071343778edc,
         type: 3}
       propertyPath: m_text
-      value: 'Experto
+      value: 'Expert
 
         16 x 16'
       objectReference: {fileID: 0}
     - target: {fileID: 2293933420018242111, guid: 8e245559e42c20b49ab4071343778edc,
         type: 3}
       propertyPath: m_fontSize
-      value: 50
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2293933420018242111, guid: 8e245559e42c20b49ab4071343778edc,
         type: 3}
@@ -1750,7 +1770,7 @@ PrefabInstance:
     - target: {fileID: 6747985646043304869, guid: 349ce2d636e881745a7da01e5b36ec15,
         type: 3}
       propertyPath: m_text
-      value: "Clasificaci\xF3n"
+      value: Ranking
       objectReference: {fileID: 0}
     - target: {fileID: 6747985646043304869, guid: 349ce2d636e881745a7da01e5b36ec15,
         type: 3}

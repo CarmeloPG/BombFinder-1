@@ -832,6 +832,7 @@ MonoBehaviour:
   viewVideoButton: {fileID: 3150535989633906043}
   endLevelButtons: {fileID: 6011153708591580174}
   moneySound: {fileID: 8300000, guid: b49b6c2fdbfe02641a1e3fc78f2b211e, type: 3}
+  banner: {fileID: 2681400792628964580}
   timeReward: {fileID: 5244987541741092074}
   moneyCollected: {fileID: 6355864851921639535}
   levelEndReward: {fileID: 1931394647863389654}
@@ -1904,17 +1905,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrazyBanner
       objectReference: {fileID: 0}
+    - target: {fileID: 1949796600488922, guid: 6633892dd9ec0dc49bcdeac357ebc225, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 114438743260853408, guid: 6633892dd9ec0dc49bcdeac357ebc225,
         type: 3}
       propertyPath: m_Type
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114438743260853408, guid: 6633892dd9ec0dc49bcdeac357ebc225,
+    - target: {fileID: 114829759443339434, guid: 6633892dd9ec0dc49bcdeac357ebc225,
         type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 52db5ecc387d1df4f8040992f53f9d9f,
-        type: 3}
+      propertyPath: size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114997706995915624, guid: 6633892dd9ec0dc49bcdeac357ebc225,
         type: 3}
       propertyPath: m_Enabled
@@ -1928,7 +1932,7 @@ PrefabInstance:
     - target: {fileID: 224151153673722542, guid: 6633892dd9ec0dc49bcdeac357ebc225,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224151153673722542, guid: 6633892dd9ec0dc49bcdeac357ebc225,
         type: 3}
@@ -1938,7 +1942,7 @@ PrefabInstance:
     - target: {fileID: 224151153673722542, guid: 6633892dd9ec0dc49bcdeac357ebc225,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224151153673722542, guid: 6633892dd9ec0dc49bcdeac357ebc225,
         type: 3}
@@ -1948,12 +1952,22 @@ PrefabInstance:
     - target: {fileID: 224151153673722542, guid: 6633892dd9ec0dc49bcdeac357ebc225,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224151153673722542, guid: 6633892dd9ec0dc49bcdeac357ebc225,
         type: 3}
       propertyPath: m_AnchorMin.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224151153673722542, guid: 6633892dd9ec0dc49bcdeac357ebc225,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 468
+      objectReference: {fileID: 0}
+    - target: {fileID: 224151153673722542, guid: 6633892dd9ec0dc49bcdeac357ebc225,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 224881285900572546, guid: 6633892dd9ec0dc49bcdeac357ebc225,
         type: 3}
@@ -1968,22 +1982,22 @@ PrefabInstance:
     - target: {fileID: 224881285900572546, guid: 6633892dd9ec0dc49bcdeac357ebc225,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.55
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 224881285900572546, guid: 6633892dd9ec0dc49bcdeac357ebc225,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.95
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224881285900572546, guid: 6633892dd9ec0dc49bcdeac357ebc225,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224881285900572546, guid: 6633892dd9ec0dc49bcdeac357ebc225,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.85
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 224881285900572546, guid: 6633892dd9ec0dc49bcdeac357ebc225,
         type: 3}
@@ -2062,6 +2076,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6633892dd9ec0dc49bcdeac357ebc225, type: 3}
+--- !u!114 &2681400792628964580 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114829759443339434, guid: 6633892dd9ec0dc49bcdeac357ebc225,
+    type: 3}
+  m_PrefabInstance: {fileID: 2639613914607395918}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 682dffb300295d64792f7cbad32f6b3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2864072244741977036 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224881285900572546, guid: 6633892dd9ec0dc49bcdeac357ebc225,

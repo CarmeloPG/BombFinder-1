@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using UnityEngine.Events;
+using CrazyGames;
 
 public class EndLevelInfoBox : MonoBehaviour {
     #region Readonly fields
@@ -20,6 +21,8 @@ public class EndLevelInfoBox : MonoBehaviour {
     private GameObject endLevelButtons;
     [SerializeField]
     private AudioClip moneySound;
+    [SerializeField]
+    private CrazyBanner banner;
 
     [Header("Money info boxes")]
     [SerializeField]
@@ -76,9 +79,30 @@ public class EndLevelInfoBox : MonoBehaviour {
     #endregion
 
     #region Unity methods
+    /// <summary>
+    /// 
+    /// </summary>
     private void Awake() {
         audioManager = AudioManager.Instance;
     }
+
+    /// <summary>
+    /// On enable it shows the banner.
+    /// </summary>
+    /*private void OnEnable() {
+        banner.gameObject.SetActive(true);
+
+        CrazySDK.Banner.RefreshBanners();
+    }
+
+    /// <summary>
+    /// On disable it hides the banner.
+    /// </summary>
+    private void OnDisable() {
+        banner.gameObject.SetActive(false);
+
+        CrazySDK.Banner.RefreshBanners();
+    }*/
     #endregion
 
     #region Public methods

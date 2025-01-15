@@ -21,9 +21,9 @@ public class MainScreen : GameScreen {
     [SerializeField]
     [Tooltip("Button to play the classic (competition) button.")]
     private Button playClassicButton;
-    [SerializeField]
+    /*[SerializeField]
     [Tooltip("Button to open the requeest logg in window. ")]
-    private Button requestLoggInButton;
+    private Button requestLoggInButton;*/
     [SerializeField]
     [Tooltip("The requeest logg in window. ")]
     private Window requestLoggInWindow;
@@ -106,20 +106,16 @@ public class MainScreen : GameScreen {
         playChallengeButton.
             interactable = !status.challengeData.overcome;
 
-        if (status.isLoggedIn) {
-            ShowClassicButton(true);
-        }
-        else
-        if (CrazySDK.IsInitialized &&
-            CrazySDK.User.IsUserAccountAvailable) {
-
-            RequestAuthentication();
+        /*if (status.isLoggedIn) {
+            playClassicButton.interactable = true;
+            //ShowClassicButton(true);
         }
         else {
-            ShowClassicButton(true);
-
             playClassicButton.interactable = false;
-        }
+
+            RequestAuthentication();
+            //ShowClassicButton(true);
+        }*/
     }
 
     /// <summary>
@@ -130,11 +126,13 @@ public class MainScreen : GameScreen {
 
         CrazySDK.User.ShowAuthPrompt((error, user) => {
             if (error == null || error.code.Equals("userAlreadySignedIn")) {
-                ShowClassicButton(true);
+                playClassicButton.interactable = true;
+                //ShowClassicButton(true);
             }
-            else
-            if (error != null && error.code.Equals("userCancelled")) {
-                ShowClassicButton(false);
+            else {
+            //if (error != null && error.code.Equals("userCancelled")) {
+                playClassicButton.interactable = false;
+                //ShowClassicButton(false);
             }
         });
     }
@@ -200,10 +198,10 @@ public class MainScreen : GameScreen {
     /// </summary>
     /// <param name="show">If false, it shows the request logg in button.</param>
     #region Private methods
-    private void ShowClassicButton(bool show) {
+    /*private void ShowClassicButton(bool show) {
         playClassicButton.gameObject.SetActive(show);
         requestLoggInButton.gameObject.SetActive(!show);
-    }
+    }*/
     #endregion
 
     #region Coroutines

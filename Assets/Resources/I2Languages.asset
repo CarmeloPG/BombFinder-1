@@ -1360,8 +1360,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Play arcade
-      - Jugar arcade
+      - Play level
+      - Jugar nivel
       Flags: 0000
       Languages_Touch: []
     - Term: PlayChallenge
@@ -1418,10 +1418,10 @@ MonoBehaviour:
       - 'Mobile bombs
 
 
-        Stating at level 16 mobile bombs apears on the field.
+        Stating at level 5 mobile bombs apears on the field.
         If a mobile bomb hits the avatar, all bombs on the field will explode. The
         frecuency with which mobile bombs apear increases with level.'
-      - "Bombas m\xF3viles:\n\nA partir del nivel 16 aparecen bombas m\xF3viles en
+      - "Bombas m\xF3viles:\n\nA partir del nivel 5 aparecen bombas m\xF3viles en
         el campo. Si una bomba m\xF3vil choca contra el avatar, explotar\xE1n todas
         las bombas del campo. La frecuencia con la que aparecen bombas m\xF3viles
         aumenta con el nivel. "
@@ -1475,7 +1475,7 @@ MonoBehaviour:
       - Reto fallado
       Flags: 0000
       Languages_Touch: []
-    - Term: CompetitionMode
+    - Term: LogIn
       TermType: 0
       Description: 
       Languages:
@@ -1555,14 +1555,11 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - 'You are not logged in Crazy Games. The guest players cannot play the competition
-        mode. If you want to play the competition mode, you must be logged in Crazy
-        Games.
-
-'
-      - "No has iniciado sesi\xF3n en Crazy Games. Los jugadores invitados no pueden
-        jugar el modo competitivo. Si quieres jugar el modo competitivo, inicia sesi\xF3n
-        en Carzy Games o crea una cuenta."
+      - It looks like you're not logged in. You can play as a guest, but we recommend
+        that you log in or create an account if you don't already have one.
+      - "Parece que no has iniciado sesi\xF3n. Puedes jugar como invitado, pero,
+        te recomendamos que inicies sesi\xF3n o que crees una cuenta si a\xFAn no
+        la tienes."
       Flags: 0000
       Languages_Touch: []
     - Term: Rank
@@ -1687,6 +1684,38 @@ MonoBehaviour:
       Languages:
       - Music
       - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: CompetitionMode
+      TermType: 0
+      Description: 
+      Languages:
+      - Competition
+      - "Competici\xF3n"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Login
+      TermType: 0
+      Description: 
+      Languages:
+      - Login
+      - "Iniciar sesi\xF3n"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: PressP
+      TermType: 0
+      Description: 
+      Languages:
+      - Press "P" to continue
+      - Pulsa "P" para continuar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Quit
+      TermType: 0
+      Description: 
+      Languages:
+      - Quit
+      - Salir
       Flags: 0000
       Languages_Touch: []
     CaseInsensitiveTerms: 0

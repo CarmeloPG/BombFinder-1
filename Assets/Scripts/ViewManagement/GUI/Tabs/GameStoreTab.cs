@@ -101,9 +101,9 @@ public class GameStoreTab : MonoBehaviour {
         if (toggle != null && !toggle.isOn) {
             toggle.isOn = true;
         }
-        else {
+        /*else {
             Debug.Log("Toggle null");
-        }
+        }*/
     }
 
     /// <summary>
@@ -240,7 +240,7 @@ public class GameStoreTab : MonoBehaviour {
     private void ShowPlayObjectData(PlayObjectData playObjectData) {
         var storeToggle = Instantiate(playObjectTogglePrefab);
         var infoBox = storeToggle.GetComponent<PlayObjectInfoBox>();
-        bool playObjectLocked = gameStore.IsLocked(playObjectData);
+        //bool playObjectLocked = gameStore.IsLocked(playObjectData);
 
         storeToggle.group = toggleGroup;
         storeToggle.name = playObjectData.Identifier;
@@ -256,11 +256,11 @@ public class GameStoreTab : MonoBehaviour {
         storeToggle.interactable = 
             gameStore.GetObjectQuantity(playObjectData) != 0;
 
-        storeToggle.targetGraphic.
+        /*storeToggle.targetGraphic.
             gameObject.SetActive(!playObjectLocked);
 
         storeToggle.gameObject.SetActive(
-            selectedPlayObjectTypes.Contains(playObjectData.Type));
+            selectedPlayObjectTypes.Contains(playObjectData.Type));*/
     }
     #endregion
 

@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using CrazyGames;
 using TMPro;
-using System;
 using CarterGames.Assets.LeaderboardManager;
 using CarterGames.Common.Serializiation;
 using CarterGames.Assets.LeaderboardManager.Serialization;
@@ -43,7 +42,7 @@ public class GameManager : MonoBehaviour {
     #region Private fields
     private GameStatus gameStatus;
     private PortalUser userData;
-    private SerializableDictionary<string, Leaderboard> loaderboards;
+    //private SerializableDictionary<string, Leaderboard> loaderboards;
     #endregion
 
     #region Properties
@@ -156,13 +155,14 @@ public class GameManager : MonoBehaviour {
 
     /*public void ClearLeaderBoards() {
         LeaderboardManager.ClearAllLeaderboards();
+        PlayerPrefs.DeleteAll();
     }*/
 
     /// <summary>
     /// It adds the time of the player to the leaderboard.
     /// </summary>
     public void FinishClassic(LevelReport levelReport) {
-        if (levelReport.levelSuccess) {
+        if (levelReport.levelSuccess && userData != null) {
             UpdateLeaderboard(
                 FindLeaderboard(levelReport.levelPlayed),
                 levelReport);
@@ -212,6 +212,10 @@ public class GameManager : MonoBehaviour {
     public void GoToLink(string link) {
         Application.OpenURL(link);
     }
+
+    public void Quit() {
+        Application.Quit();
+    }
     #endregion
 
     #region Protected methods
@@ -254,7 +258,7 @@ public class GameManager : MonoBehaviour {
                 LeaderboardType.Time);
         }
 
-        loaderboards = LeaderboardManager.AllLeaderboards;
+        //loaderboards = LeaderboardManager.AllLeaderboards;
     }
 
     /// <summary>
@@ -264,9 +268,8 @@ public class GameManager : MonoBehaviour {
     /// <param name="levelReport">The report of the result of the game.</param>
 
     public void UpdateLeaderboard(Leaderboard leaderboard, LevelReport levelReport) {
-        LeaderboardEntry playerEntry;
-
-        playerEntry = leaderboard.GetEntry(userData.username);
+        LeaderboardEntry playerEntry = 
+            leaderboard.GetEntry(userData.username);
 
         if (playerEntry == null) {
             playerEntry = new LeaderboardEntryTime(
@@ -335,14 +338,15 @@ public class GameManager : MonoBehaviour {
         //debugText.text += "Game data loaded.\n";
         
         if (crazySDKInitialized) {
-            if (CrazySDK.User.IsUserAccountAvailable) {
+            CheckLoggedInUser();
+            /*if (CrazySDK.User.IsUserAccountAvailable) {
                 CheckLoggedInUser();
             }
             else {
                 gameStatus.isLoggedIn = false;
 
                 OnLoadGameStatus.Invoke(gameStatus);
-            }
+            }*/
         }
         else {
             gameStatus.isLoggedIn = false;
@@ -375,9 +379,11 @@ public class GameManager : MonoBehaviour {
     private void CheckLoggedInUser() {
         CrazySDK.User.GetUser(user => {
             userData = user;
-            gameStatus.isLoggedIn = user != null;
+            //gameStatus.isLoggedIn = user != null;
 
             if (user == null) {
+                gameStatus.isLoggedIn = false;
+
                 CrazySDK.User.AddAuthListener((newUser) => {
                     userData = newUser;
                     gameStatus.isLoggedIn = true;
@@ -386,13 +392,16 @@ public class GameManager : MonoBehaviour {
 
                     OnLoadGameStatus.Invoke(gameStatus);
                 });
-                
             }
             else {
+                gameStatus.isLoggedIn = true;
+                
                 LoadLeaderboards();
 
-                OnLoadGameStatus.Invoke(gameStatus);
+                //OnLoadGameStatus.Invoke(gameStatus);
             }
+
+            OnLoadGameStatus.Invoke(gameStatus);
         });
     }
 

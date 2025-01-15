@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using I2.Loc;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -38,8 +39,9 @@ public class Roulette : MonoBehaviour {
     #region Properties
     public bool IsStop {
         get {
-            if (Mathf.Abs(pivot.angularVelocity) < 1.0f)
+            if (Mathf.Abs(pivot.angularVelocity) < 1.0f) {
                 pivot.angularVelocity = .0f;
+            }
 
             return pivot.angularVelocity == .0f;
         }
@@ -76,20 +78,19 @@ public class Roulette : MonoBehaviour {
             rewardBox.SetActive(false);
         }
     }
-
-    /*private void OnTriggerEnter2D(Collider2D collision) {
-        OnSpinRoulette.Invoke();
-    }*/
     #endregion
 
     #region Public methods
+    /// <summary>
+    /// 
+    /// </summary>
     public void SpinRoulete() {
-        pivot.AddTorque(Random.Range(minSpinForce, maxSpinForce));
-        audioManager.PlayEffect(spinSound);
+        if (gameObject.activeSelf && gameObject.activeInHierarchy) {
+            pivot.AddTorque(Random.Range(minSpinForce, maxSpinForce));
+            audioManager.PlayEffect(spinSound);
 
-        StartCoroutine(CheckResult());
-
-        //OnSpinRoulette.Invoke();
+            StartCoroutine(CheckResult());
+        }
     }
     #endregion
 
@@ -101,7 +102,9 @@ public class Roulette : MonoBehaviour {
 
     #region Coroutines
     private IEnumerator CheckResult() {
-        RouletteItem winnerItem = rouletteItems[0];
+        RouletteItem winnerItem;
+        string rewardText =
+            LocalizationManager.GetTranslation(Constants.i2_term_reward);
         float 
             winnerItemRotation,
             itemAngle = 360 / rouletteItems.Length;
@@ -109,9 +112,9 @@ public class Roulette : MonoBehaviour {
         yield return new WaitForSeconds(.1f);
 
         while (!IsStop) {
-            for (int i = 0; i < rouletteItems.Length; i++) {
+            /*for (int i = 0; i < rouletteItems.Length; i++) {
                 rouletteItems[i].transform.rotation = Quaternion.identity;
-            }
+            }*/
 
             yield return null;
         }
@@ -122,7 +125,7 @@ public class Roulette : MonoBehaviour {
         winnerItem = 
             rouletteItems[(int)(winnerItemRotation / itemAngle)];
 
-        rewardMessage.text = "Reward X " + winnerItem.Reward;
+        rewardMessage.text = $"{rewardText} X {winnerItem.Reward}";
 
         audioManager.StopAllEffects();
         audioManager.PlayEffect(winSound);

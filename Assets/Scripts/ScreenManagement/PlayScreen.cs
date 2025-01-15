@@ -330,6 +330,7 @@ public class PlayScreen : GameScreen {
 
         if (levelSuccess) {
             audioManger.PlayEffect(levelSuccessSound);
+            CrazySDK.Game.HappyTime();
         }
 
         playerCamera.gameObject.SetActive(false);
@@ -485,9 +486,9 @@ public class PlayScreen : GameScreen {
         player.Pickup();
 
         if (tile.IsMarked) {
-            BombsCount--;
+            BombsCount = bombsCount - 1;
 
-            if (BombsCount == 0) {
+            if (bombsCount == 0) {
                 Pause = true;
 
                 CheckCountry();
@@ -495,7 +496,7 @@ public class PlayScreen : GameScreen {
             }
         }
         else {
-            BombsCount++;
+            BombsCount = bombsCount + 1;
         }
         
         OnMarkTile.Invoke(tile);
@@ -598,8 +599,8 @@ public class PlayScreen : GameScreen {
     /// </summary>
     /// <returns></returns>
     protected IEnumerator<WaitForSeconds> SetPlayScreen() {
+        int bombs = bombsCount;
         Tile currentTile;
-        //float deltaLoadTime = loadTime / tilesCount;
         Tile[] tilePrefabs = 
             tileThemes[Random.Range(0, tileThemes.Length)].TilePrefabs;
         Vector2 bombCoords = new Vector2(
@@ -614,10 +615,11 @@ public class PlayScreen : GameScreen {
             yield return null;// new WaitForSeconds(1f);
         }
 
+        Pause = true;
         //player.EnableControls = false;
         startlevelInfoBox.ShowInfo(true);
 
-        mainCamera.gameObject.SetActive(true);
+        //mainCamera.gameObject.SetActive(true);
 
         for (int y = 0; y < tilesBySide; y++) {
             currentTilePosition.x = (float)y % 2 / 2;
@@ -647,7 +649,7 @@ public class PlayScreen : GameScreen {
             currentTilePosition.z += tileSize;
         }
 
-        for (int i = 0; i < BombsCount; i++) {
+        for (int i = 0; i < bombs; i++) {
             currentTile = country[(int)bombCoords.x, (int)bombCoords.y];
 
             while (currentTile.HasBomb || bombCoords == Vector2.zero) {

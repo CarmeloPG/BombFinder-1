@@ -41,8 +41,8 @@ public class AdsManager : MonoBehaviour
 	#endregion
 
 	#region Serialize fields
-	[SerializeField]
-	private CrazyBanner banner;
+	//[SerializeField]
+	//private CrazyBanner banner;
     [SerializeField]
     [Tooltip("Number of levels without show a midgame ad.")]
     private int playsBetweenAds = 5;
@@ -70,13 +70,13 @@ public class AdsManager : MonoBehaviour
     public UnityEvent OnLoadRewardedAd;
     [Tooltip("An addblock is detected.")]
     public UnityEvent OnDetectAdBlock;
-	#endregion
+    #endregion
 
-	#region Unity methods
-	#endregion
+    #region Unity methods
+    #endregion
 
-	#region Public methods
-	public void InitializeAds() {
+    #region Public methods
+    public void InitializeAds() {
         playsWithoutAds = 0;
 
 		CrazySDK.Ad.HasAdblock((hasAdblock) => {
@@ -86,28 +86,34 @@ public class AdsManager : MonoBehaviour
 		});
 
         //CrazySDK.Banner.RegisterBanner(banner);
-
         //ShowBanner();
 	}
 
+    /// <summary>
+    /// 
+    /// </summary>
     public void ShowBanner() {
-        CrazySDK.Banner.RefreshBanners();
+        //CrazySDK.Banner.RefreshBanners();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     /*public void HideBanner() {
+        banner.gameObject.SetActive(false);
     }*/
 
     public void ShowMidGame() {
         if (playsWithoutAds >= playsBetweenAds) {
-            CrazySDK.Ad.RequestAd(CrazyAdType.Rewarded,
+            CrazySDK.Ad.RequestAd(CrazyAdType.Midgame,
             //Ad Started
-            () => {
-                UpdateMidGameOptions();
-            },
+            null,
             //Ad error
             null,
             //Ad Finised
-            null);
+            () => {
+                UpdateMidGameOptions();
+            });
         }
         else {
             playsWithoutAds++;
@@ -115,8 +121,6 @@ public class AdsManager : MonoBehaviour
     }
 
     public void ShowRewardedAd() {
-        UpdateMidGameOptions();
-
         CrazySDK.Ad.RequestAd(CrazyAdType.Rewarded,
             //Ad Started
             null,
@@ -124,6 +128,8 @@ public class AdsManager : MonoBehaviour
             null,
             //Ad Finised
             () => {
+                UpdateMidGameOptions();
+
                 OnEarnReward.Invoke();
             });
     }
@@ -136,8 +142,8 @@ public class AdsManager : MonoBehaviour
         playsWithoutAds = 0;
     }
 
-	private void OnMidGameClosed(object sender, EventArgs args) {
+	/*private void OnMidGameClosed(object sender, EventArgs args) {
 		UpdateMidGameOptions();
-	}
+	}*/
 	#endregion
 }
