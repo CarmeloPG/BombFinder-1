@@ -629,11 +629,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2074476566819671142, guid: cc5b84102b78d794781e9d3c86618e86,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2098472544998864120, guid: cc5b84102b78d794781e9d3c86618e86,
         type: 3}
       propertyPath: m_fontSize
@@ -938,11 +933,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PowerUpShop
-      objectReference: {fileID: 0}
-    - target: {fileID: 5234164448761163950, guid: cc5b84102b78d794781e9d3c86618e86,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5564449954874455235, guid: cc5b84102b78d794781e9d3c86618e86,
         type: 3}

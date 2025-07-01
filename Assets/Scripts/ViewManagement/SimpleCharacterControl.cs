@@ -176,13 +176,19 @@ public class SimpleCharacterControl : MonoBehaviour {
         transform.position += transform.forward * m_currentV * m_moveSpeed * Time.deltaTime;
         transform.Rotate(0, m_currentH * m_turnSpeed * Time.deltaTime, 0);
 
-        if (m_animator != null) {
+        /*if (m_animator != null) {
+            m_animator.SetFloat("MoveSpeed", m_currentV);
+        }*/
+
+        if (v == 0f) {
+            m_animator.SetFloat("MoveSpeed", 0f);
+        }
+        else if (v > 0f) {
             m_animator.SetFloat("MoveSpeed", m_currentV);
         }
-
-        /*if (v != 0f) {
-            OnWalk.Invoke();
-        }*/
+        else {
+            m_animator.SetFloat("MoveSpeed", -m_currentV);
+        }
 
         JumpingAndLanding();
     }

@@ -91,15 +91,6 @@ public class ArcadeScreen : PlayScreen {
         get => currentLevel;
         set => currentLevel = value;
     }
-
-
-    /// <summary>
-    /// The level to start to spawn mobile bombs.
-    /// </summary>
-    public int SpawnEnemiesLevel {
-        get => spawnEnemiesLevel;
-    }
-
     #endregion
 
     #region Events
@@ -122,7 +113,7 @@ public class ArcadeScreen : PlayScreen {
         //spawnEnemiesLevel = 
             //(maxTilesBySide - minTilesBySide) * addTileLevel;
 
-        Debug.Log($"Add tile level: {addTileLevel}.");
+        //Debug.Log($"Add tile level: {addTileLevel}.");
     }
     #endregion
 
@@ -173,11 +164,12 @@ public class ArcadeScreen : PlayScreen {
     /// <param name="powerUp">The power up.</param>
     public void UsePowerUp(PlayObject powerUp) {
         bombsMarkCount = Mathf.FloorToInt(bombsCount * powerUpMultiplier);
-        pause = false;
+        //pause = false;
 
         Destroy(powerUp.gameObject);
 
         powerUpShopWindow.Close();
+        startlevelInfoBox.ShowInfo(true);
     }
     #endregion
 
@@ -195,6 +187,15 @@ public class ArcadeScreen : PlayScreen {
 
         Vector3 position = new Vector3( 
             Random.Range(0, tilesBySide), .2f, Random.Range(0, tilesBySide));
+
+        if (position.x == Mathf.FloorToInt(player.transform.position.x)) {
+            if (position.x - 1 < 1) {
+                position.x = position.x + 2;
+            }
+            else {
+                position.x = position.x - 2;
+            }
+        }
 
         while (direction == Vector3.zero) {
             direction = new Vector3(

@@ -8,9 +8,13 @@ public class AudioSettings : MonoBehaviour {
 
 	#region Serialize fields
 	[SerializeField]
-	private Toggle effectsToggle;
+	private Toggle muteEffectsToggle;
 	[SerializeField]
-	private Toggle musicToggle;
+	private Toggle muteMusicToggle;
+    [SerializeField]
+    private Slider volumeEffecsSlider;
+    [SerializeField]
+    private Slider volumeMusicSlider;
     #endregion
 
     #region Private fields
@@ -32,18 +36,45 @@ public class AudioSettings : MonoBehaviour {
     private void Awake() {
         audioManager = AudioManager.Instance;
 
-        musicToggle.isOn = audioManager.MusicMuted;
-        effectsToggle.isOn = audioManager.EffectsMuted;
-
-        musicToggle.onValueChanged.AddListener(
-        delegate {
-                audioManager.MusicMuted = musicToggle.isOn;
-            });
-
-        effectsToggle.onValueChanged.AddListener(
+        muteMusicToggle.onValueChanged.AddListener(
             delegate {
-                audioManager.EffectsMuted = effectsToggle.isOn;
+                audioManager.IsMusicMuted = !muteMusicToggle.isOn;
             });
+
+        muteEffectsToggle.onValueChanged.AddListener(
+            delegate {
+                audioManager.IsEffectsMuted = !muteEffectsToggle.isOn;
+            });
+
+        volumeMusicSlider.onValueChanged.AddListener(
+            delegate {
+                audioManager.MusicVolume = volumeMusicSlider.value;
+            });
+
+        volumeEffecsSlider.onValueChanged.AddListener(
+            delegate {
+                audioManager.EffectsVolume = volumeEffecsSlider.value;
+            });
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void OnEnable() {
+        muteMusicToggle.SetIsOnWithoutNotify(!audioManager.IsMusicMuted);
+        muteEffectsToggle.SetIsOnWithoutNotify(!audioManager.IsEffectsMuted);
+        volumeMusicSlider.SetValueWithoutNotify(audioManager.MusicVolume);
+        volumeEffecsSlider.SetValueWithoutNotify(audioManager.EffectsVolume);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void OnDestroy() {
+        muteEffectsToggle.onValueChanged.RemoveAllListeners();
+        muteMusicToggle.onValueChanged.RemoveAllListeners();
+        volumeMusicSlider.onValueChanged.RemoveAllListeners();
+        volumeEffecsSlider.onValueChanged.RemoveAllListeners();
     }
     #endregion
 

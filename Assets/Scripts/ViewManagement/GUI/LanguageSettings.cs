@@ -33,7 +33,7 @@ public class LanguageSettings : MonoBehaviour {
     /// <summary>
     /// 
     /// </summary>
-    private void Awake() {
+    private void OnEnable() {
         //string language = LocalizationManager.CurrentLanguageCode;
         
         switch (LocalizationManager.CurrentLanguageCode) {

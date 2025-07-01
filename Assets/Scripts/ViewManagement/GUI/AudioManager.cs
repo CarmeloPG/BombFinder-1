@@ -3,6 +3,7 @@ using System.Collections;
 using System.Threading;
 using System;
 using System.Drawing;
+using Newtonsoft.Json.Linq;
 
 /// <summary>
 /// Can play one music and array of effects at same timeReward.
@@ -29,21 +30,39 @@ public class AudioManager : Singleton<AudioManager> {
     #endregion
 
     #region Properties
-    public bool MusicMuted {
-        get => gameManager.MusicMuted;
+    public bool IsMusicMuted {
+        get => gameManager.IsMusicMuted;
         set {
-            gameManager.MusicMuted = value;
+            gameManager.IsMusicMuted = value;
 
             MuteMusic(value);
         }
     }
 
-    public bool EffectsMuted {
-        get => gameManager.EffectsMuted;
+    public bool IsEffectsMuted {
+        get => gameManager.IsEffectsMuted;
         set {
-            gameManager.EffectsMuted = value;
+            gameManager.IsEffectsMuted = value;
 
             MuteEffects(value);
+        }
+    }
+
+    public float MusicVolume {
+        get => gameManager.MusicVolume;
+        set {
+            gameManager.MusicVolume = value;
+
+            SetMusicVolume(value);
+        }
+    }
+
+    public float EffectsVolume {
+        get => gameManager.EffectsVolume;
+        set {
+            gameManager.EffectsVolume = value;
+
+            SetEffectsVolume(value);
         }
     }
     #endregion
@@ -54,13 +73,15 @@ public class AudioManager : Singleton<AudioManager> {
     #endregion
 
     #region Unity methods
-
     #endregion
 
     #region Public methods
     public void LoadAudioStatus() {
-        MuteMusic(gameManager.MusicMuted);
-        MuteEffects(gameManager.EffectsMuted);
+        SetMusicVolume(gameManager.MusicVolume);
+        SetEffectsVolume(gameManager.EffectsVolume);
+
+        MuteMusic(gameManager.IsMusicMuted);
+        MuteEffects(gameManager.IsEffectsMuted);
     }
 
     public void PlayMusic(AudioClip clip) {
@@ -149,6 +170,10 @@ public class AudioManager : Singleton<AudioManager> {
         musicSource.mute = mute;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="mute"></param>
     private void MuteEffects(bool mute) {
         foreach (var effectSource in effectsSource) {
             effectSource.mute = mute;
@@ -156,6 +181,28 @@ public class AudioManager : Singleton<AudioManager> {
 
         foreach (var effectSource in effects3DSource) {
             effectSource.mute = mute;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="volume"></param>
+    private void SetMusicVolume(float volume) {
+        musicSource.volume = volume;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="volume"></param>
+    private void SetEffectsVolume(float volume) {
+        foreach (var effectSource in effectsSource) {
+            effectSource.volume = volume;
+        }
+
+        foreach (var effectSource in effects3DSource) {
+            effectSource.volume = volume;
         }
     }
     #endregion

@@ -9,5 +9,5 @@ public struct LevelReport  {
 	public int moneyCollected;
 	public int timeReward;
 	public int totalReward;
-	public bool airView;
+	//public bool airView;
 }

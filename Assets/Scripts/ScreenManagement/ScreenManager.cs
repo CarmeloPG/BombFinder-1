@@ -44,9 +44,9 @@ public class ScreenManager : MonoBehaviour {
         GameStatus.ChallengeData challengeData = status.challengeData;
         DateTime now = DateTime.Now;
 
-        arcadeScreen.AirView = status.airView;
+        /*arcadeScreen.AirView = status.airView;
         challengeScreen.AirView = status.airView;
-        classicScreen.AirView = status.airView;
+        classicScreen.AirView = status.airView;*/
 
         if (now.Day > challengeData.day ||
             now.Month > challengeData.month ||

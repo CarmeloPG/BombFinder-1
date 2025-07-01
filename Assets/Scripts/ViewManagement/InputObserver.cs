@@ -23,6 +23,8 @@ public class InputObserver : MonoBehaviour {
     private KeyCode exposeTileKey;
     [SerializeField]
     private KeyCode markTileKey;
+    [SerializeField]
+    private KeyCode startPlayKey;
     #endregion
 
     #region Private fields
@@ -35,11 +37,13 @@ public class InputObserver : MonoBehaviour {
     /// It returns if the player controls are enabled.
     /// </summary>
     public bool IsEnabled {
+        get => isEnabled;
         set => isEnabled = value;
     }
     #endregion
 
     #region Events
+    [Header("Events")]
     [Tooltip("When the expose tile key or the left mouse button is released, it sends the event.")]
     public UnityEvent OnExposeTileKeyUp;
     [Tooltip("When the mark tile key or the left mouse button is released, it sends the event.")]
@@ -48,6 +52,8 @@ public class InputObserver : MonoBehaviour {
     public UnityEvent OnPauseKeyUp;
     [Tooltip("When the chnage view key is released, it sends the event.")]
     public UnityEvent OnChangeViewKeyUp;
+    [Tooltip("When the start play key is released, it sends the event.")]
+    public UnityEvent OnStartPlayKeyUp;
     #endregion
 
     #region Unity methods
@@ -60,14 +66,18 @@ public class InputObserver : MonoBehaviour {
             OnPauseKeyUp.Invoke();
         }
 
+        if (Input.GetKeyUp(startPlayKey)) {
+            OnStartPlayKeyUp.Invoke();
+        }
+
         if (isEnabled) {
             if (Input.GetMouseButtonUp(leftMouseButton) 
-                || Input.GetKeyUp(KeyCode.Q)) 
+                || Input.GetKeyUp(exposeTileKey)) 
             {
                 OnExposeTileKeyUp.Invoke();
             }
             else if (Input.GetMouseButtonUp(rightMouseButton) 
-                     || Input.GetKeyUp(KeyCode.E)) 
+                     || Input.GetKeyUp(markTileKey)) 
             {
                 OnMarkTileKeyUp.Invoke();
             }

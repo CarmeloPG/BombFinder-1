@@ -67,7 +67,11 @@ public class ObjectsManager : MonoBehaviour {
 		foreach (GameStore shopStore in shopStores) {
             shopStore.Set();
         }
-		
+
+        foreach (PlayObjectSlot slot in playObjects) {
+            slot.Clear();
+        }
+
         foreach (string id in status.playerInventory) {
             playObjectSlot = playObjects.
 				Find (slot => slot.ObjectData.Identifier.Equals (id));

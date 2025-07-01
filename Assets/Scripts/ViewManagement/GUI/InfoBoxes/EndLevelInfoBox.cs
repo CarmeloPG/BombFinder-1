@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using UnityEngine.Events;
-using CrazyGames;
 
 public class EndLevelInfoBox : MonoBehaviour {
     #region Readonly fields
@@ -18,11 +17,15 @@ public class EndLevelInfoBox : MonoBehaviour {
     [SerializeField]
 	private Button viewVideoButton;
     [SerializeField]
+    private Button skipShowRewardButton;
+    [SerializeField]
     private GameObject endLevelButtons;
     [SerializeField]
-    private AudioClip moneySound;
+    private GameObject normalViewButton;
     [SerializeField]
-    private CrazyBanner banner;
+    private GameObject airViewButton;
+    [SerializeField]
+    private AudioClip moneySound;
 
     [Header("Money info boxes")]
     [SerializeField]
@@ -55,6 +58,7 @@ public class EndLevelInfoBox : MonoBehaviour {
     private LevelReport levelReport;
     private int reward;
     private AudioManager audioManager;
+    private bool isActiveShowReward;
 	#endregion
 
 	#region Properties
@@ -68,6 +72,13 @@ public class EndLevelInfoBox : MonoBehaviour {
             reward = value;
 
             totalReward.ShowMoneyAmount(MoneyType.GameMoney, reward);
+        }
+    }
+
+    public bool AirView {
+        set {
+            airViewButton.SetActive(!value);
+            normalViewButton.SetActive(value);
         }
     }
     #endregion
@@ -87,22 +98,11 @@ public class EndLevelInfoBox : MonoBehaviour {
     }
 
     /// <summary>
-    /// On enable it shows the banner.
+    /// 
     /// </summary>
-    /*private void OnEnable() {
-        banner.gameObject.SetActive(true);
-
-        CrazySDK.Banner.RefreshBanners();
+    private void OnEnable() {
+        SkipShowReward(false);
     }
-
-    /// <summary>
-    /// On disable it hides the banner.
-    /// </summary>
-    private void OnDisable() {
-        banner.gameObject.SetActive(false);
-
-        CrazySDK.Banner.RefreshBanners();
-    }*/
     #endregion
 
     #region Public methods
@@ -168,6 +168,14 @@ public class EndLevelInfoBox : MonoBehaviour {
         audioManager.PlayEffect(moneySound);
         OnGetReward.Invoke();
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void SkipShowReward(bool skip) {
+        isActiveShowReward = !skip;
+        skipShowRewardButton.gameObject.SetActive(!skip);
+    }
     #endregion
 
     #region Protected methods
@@ -189,10 +197,12 @@ public class EndLevelInfoBox : MonoBehaviour {
 
         //audioManager.PlayEffect(moneySound);
 
-        yield return new WaitForSeconds(waitTime);
+        if (isActiveShowReward) {
+            yield return new WaitForSeconds(waitTime);
+        }
 
         //Show level end reward
-        while (currentReward > deltaReward) {
+        while ((currentReward > deltaReward) && isActiveShowReward) {
             currentReward -= deltaReward;
 
             Reward = reward + deltaReward;
@@ -208,7 +218,9 @@ public class EndLevelInfoBox : MonoBehaviour {
         audioManager.PlayEffect(moneySound);
         levelEndReward.ShowMoneyAmount(MoneyType.GameMoney, 0);
 
-        yield return new WaitForSeconds(waitTime);
+        if (isActiveShowReward) {
+            yield return new WaitForSeconds(waitTime);
+        }
 
         //Show money collected reward
         currentReward = levelReport.moneyCollected;
@@ -217,9 +229,11 @@ public class EndLevelInfoBox : MonoBehaviour {
         endLevelAnimator.Play(showMoneyCollectedReward.name);
         audioManager.PlayEffect(moneySound);
 
-        yield return new WaitForSeconds(waitTime);
+        if (isActiveShowReward) {
+            yield return new WaitForSeconds(waitTime);
+        }
 
-        while (currentReward > deltaReward) {
+        while ((currentReward > deltaReward) && isActiveShowReward) {
             currentReward -= deltaReward;
 
             Reward = reward + deltaReward;
@@ -235,14 +249,18 @@ public class EndLevelInfoBox : MonoBehaviour {
         audioManager.PlayEffect(moneySound);
         moneyCollected.ShowMoneyAmount(MoneyType.GameMoney, 0);
 
-        yield return new WaitForSeconds(waitTime);
+        if (isActiveShowReward) {
+            yield return new WaitForSeconds(waitTime);
+        }
 
         endLevelAnimator.Play(hideMoneyCollectedReward.name);
         audioManager.PlayEffect(moneySound);
 
         if (levelReport.timeReward > 0) {
             //Show time reward
-            yield return new WaitForSeconds(waitTime);
+            if (isActiveShowReward) {
+                yield return new WaitForSeconds(waitTime);
+            }
 
             currentReward = levelReport.timeReward;
             deltaReward = Mathf.CeilToInt(currentReward * Time.deltaTime / 2);
@@ -250,9 +268,11 @@ public class EndLevelInfoBox : MonoBehaviour {
             endLevelAnimator.Play(showTimeReward.name);
             audioManager.PlayEffect(moneySound);
 
-            yield return new WaitForSeconds(waitTime);
+            if (isActiveShowReward) {
+                yield return new WaitForSeconds(waitTime);
+            }
 
-            while (currentReward > deltaReward) {
+            while ((currentReward > deltaReward) && isActiveShowReward) {
                 currentReward -= deltaReward;
 
                 Reward = reward + deltaReward;
@@ -268,14 +288,16 @@ public class EndLevelInfoBox : MonoBehaviour {
             audioManager.PlayEffect(moneySound);
             timeReward.ShowMoneyAmount(MoneyType.GameMoney, 0);
 
-            yield return new WaitForSeconds(waitTime);
+            if (isActiveShowReward) {
+                yield return new WaitForSeconds(waitTime);
+            }
 
             endLevelAnimator.Play(hideTimeReward.name);
         }
 
         //Show total reward
         //yield return new WaitForSeconds(waitTime);
-
+        skipShowRewardButton.gameObject.SetActive(false);
         endLevelAnimator.Play(showTotalReward.name);
     }
 	#endregion

@@ -40,8 +40,8 @@ public class ChallengeScreen : PlayScreen {
     private int hurryUpTime;
     [SerializeField]
     private AudioClip hurryUpMusic;
-    [SerializeField]
-    private FloatMessage hurryUpMessage;
+    //[SerializeField]
+    //private FloatMessage hurryUpMessage;
     #endregion
 
     #region Private fields
@@ -124,7 +124,7 @@ public class ChallengeScreen : PlayScreen {
         SetChallenge();
 
         country = new Tile[tilesBySide, tilesBySide];
-        pause = false;
+        //pause = false;
 
         startlevelInfoBox.ShowInfo(this);
 
@@ -228,14 +228,15 @@ public class ChallengeScreen : PlayScreen {
                     audioManager.StopMusic();
                     audioManager.PlayMusic(hurryUpMusic);
 
-                    hurryUpMessage.ShowMessage(hurryUpTime.ToString());
+                    //hurryUpMessage.ShowMessage(hurryUpTime.ToString());
                 }
             }
 
             yield return new WaitForSeconds(1f);
         } while (time >= 0);
 
-        EndPlay(false);
+        //EndPlay(false);
+        CheckContinues();
     }
     #endregion
 }

@@ -18,6 +18,8 @@ public class Store : GameStore {
     [Header("Store")]
 	[SerializeField]
 	private PlayObjectSlot[] slots;
+    [SerializeField]
+    private List<GameEvent> gameEvents;
 	#endregion
 
 	#region Private fields
@@ -104,16 +106,24 @@ public class Store : GameStore {
     /// Creates the list of objectsData
     /// </summary>
     public override void Set() {
+        PlayObjectSlot[] eventSlots;
+
         base.Set();
 
         slotsDict = new Dictionary<string, PlayObjectSlot>();
 
-        foreach (var slot in slots) {
-            slot.Clear();
+        foreach (GameEvent gameEvent in gameEvents) {
+            eventSlots = gameEvent.PlayObjectSlots;
 
-            playObjectsData.Add(slot.ObjectData);
+            if (gameEvent.IsActive) {
+                foreach (PlayObjectSlot slot in eventSlots) {
+                    AddSlot(slot);
+                }
+            }
+        }
 
-            slotsDict.Add(slot.ObjectData.Identifier, slot);
+        foreach (PlayObjectSlot slot in slots) {
+            AddSlot(slot);
         }
     }
 
@@ -133,6 +143,23 @@ public class Store : GameStore {
     #endregion
 
     #region Private methods
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="slot"></param>
+    private void AddSlot(PlayObjectSlot slot) {
+        slot.Clear();
+
+        playObjectsData.Add(slot.ObjectData);
+
+        slotsDict.Add(slot.ObjectData.Identifier, slot);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="objectData"></param>
+    /// <returns></returns>
     private PlayObjectSlot FindSlot(PlayObjectData objectData) {
         PlayObjectSlot slot;
 

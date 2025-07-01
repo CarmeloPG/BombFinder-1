@@ -418,12 +418,12 @@ MonoBehaviour:
       - "Presentaci\xF3n iniciada"
       Flags: 0000
       Languages_Touch: []
-    - Term: Msg_StartRecording
+    - Term: Msg_LookForBombs
       TermType: 0
       Description: 
       Languages:
-      - Start recording
-      - "Grabaci\xF3n iniciada"
+      - Press the space bar to look for bombs
+      - Pulsa la barra espaciadora para buscar bombas
       Flags: 0000
       Languages_Touch: []
     - Term: Time
@@ -866,8 +866,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Play next level
-      - Jugar siguiente nivel
+      - Next level
+      - Siguiente nivel
       Flags: 0000
       Languages_Touch: []
     - Term: HowToPlay
@@ -1230,14 +1230,6 @@ MonoBehaviour:
       - Estrato
       Flags: 0000
       Languages_Touch: []
-    - Term: AddBlockDetected
-      TermType: 0
-      Description: 
-      Languages:
-      - Title
-      - 
-      Flags: 0000
-      Languages_Touch: []
     - Term: AdblockDetected
       TermType: 0
       Description: 
@@ -1418,7 +1410,7 @@ MonoBehaviour:
       - 'Mobile bombs
 
 
-        Stating at level 5 mobile bombs apears on the field.
+        Starting at level 5 mobile bombs apears on the field.
         If a mobile bomb hits the avatar, all bombs on the field will explode. The
         frecuency with which mobile bombs apear increases with level.'
       - "Bombas m\xF3viles:\n\nA partir del nivel 5 aparecen bombas m\xF3viles en
@@ -1599,7 +1591,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - Change view
-      - Camibar vista
+      - Cambiar vista
       Flags: 0000
       Languages_Touch: []
     - Term: AirView
@@ -1683,7 +1675,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - Music
-      - 
+      - "M\xFAsica"
       Flags: 0000
       Languages_Touch: []
     - Term: CompetitionMode
@@ -1710,12 +1702,20 @@ MonoBehaviour:
       - Pulsa "P" para continuar
       Flags: 0000
       Languages_Touch: []
-    - Term: Quit
+    - Term: Exit
       TermType: 0
       Description: 
       Languages:
       - Quit
       - Salir
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Skip
+      TermType: 0
+      Description: 
+      Languages:
+      - Skip
+      - Saltar
       Flags: 0000
       Languages_Touch: []
     CaseInsensitiveTerms: 0

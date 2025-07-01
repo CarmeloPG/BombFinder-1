@@ -19,7 +19,7 @@ public class PlayObjectSlot : ScriptableObject {
 	[Tooltip("Maximum number of instances that can be returned. If < 0 the instances are infinite.")]
 	private int capacity;
 	[SerializeField]
-	[Tooltip("Current number of instances of the targetOpbject witch can be isntantiated.")]
+	[Tooltip("Current number of instances of the targetOpbject witch can be instantiated.")]
     private int currentQuantity;
     [SerializeField]
 	[Tooltip("If it is locked will never create a instance of the object. Stil can be added new objects.")]

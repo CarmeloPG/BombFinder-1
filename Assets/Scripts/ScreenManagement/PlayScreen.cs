@@ -1,5 +1,3 @@
-//using System;
-using CrazyGames;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -173,22 +171,21 @@ public class PlayScreen : GameScreen {
             //player.Show(!pause);
 
             mainCamera.gameObject.SetActive(pause);
+            airCamera.gameObject.SetActive(!pause && airView);
+            playerCamera.gameObject.SetActive(!pause && !airView);
 
-            if (airView) {
-                airCamera.gameObject.SetActive(!pause);
-            }
-            else {
-                playerCamera.gameObject.SetActive(!pause);
-            }
+                /*if (airView) {
+                    airCamera.gameObject.SetActive(!pause);
+                }
+                else {
+                    playerCamera.gameObject.SetActive(!pause);
+                }*/
 
             if (pause == true) {
                 Cursor.lockState = CursorLockMode.None;
-
-                CrazySDK.Game.GameplayStop();
             }
             else {
                 Cursor.lockState = CursorLockMode.Locked;
-                CrazySDK.Game.GameplayStart();
             }
         }
     }
@@ -212,9 +209,9 @@ public class PlayScreen : GameScreen {
             deltaLoadTime = loadTime / tilesCount;
 
             //center = tilesBySide / 2;
-
+            airCamera.orthographicSize = (tilesBySide / 2) + 1;
             airCamera.transform.position = 
-                new Vector3(center, tilesBySide, center);
+                new Vector3(center, center, center);
 
             mainCamera.transform.position = new Vector3(
                 center,
@@ -227,10 +224,22 @@ public class PlayScreen : GameScreen {
         set {
             airView = value;
 
-            levelReport.airView = airView;
+            /*if (!endlevelInfoBox.gameObject.activeSelf) {
+                levelReport.airView = airView;
+            }*/
 
             airCamera.gameObject.SetActive(airView);
-            playerCamera.gameObject.SetActive(!airView);
+
+            if (player != null && country != null) {
+                playerCamera.gameObject.SetActive(!airView && !player.IsStunned);
+                mainCamera.gameObject.SetActive(!airView && player.IsStunned);
+
+                if (!levelReport.levelSuccess) {
+                    foreach (Tile tile in country) {
+                        tile.AirView = value;
+                    }
+                }
+            }
         }
     }
     #endregion
@@ -267,6 +276,9 @@ public class PlayScreen : GameScreen {
     #endregion
 
     #region Unity methods
+    /// <summary>
+    /// 
+    /// </summary>
     protected virtual void Awake() {
         levelReport = new LevelReport {
             screen = this,
@@ -279,22 +291,35 @@ public class PlayScreen : GameScreen {
         playerCamera.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    private void OnEnable() {
+        inputObserver.OnStartPlayKeyUp.AddListener(LookForBombs);
+
+        /*airCamera.gameObject.SetActive(airView);
+        playerCamera.gameObject.SetActive(!airView && !player.IsStunned);
+        mainCamera.gameObject.SetActive(!airView && player.IsStunned);*/
+    }
     #endregion
 
     #region Public methods
 
     public virtual void Play(PlayObject thePlayer) {
         player = thePlayer;
+        airView = false;
 
         player.transform.parent = stage;
         player.transform.localPosition = initialPlayerPosition;
         player.transform.localRotation = Quaternion.identity;
 
         levelReport.player = player;
+        levelReport.levelSuccess = false;
 
         playerCamera.transform.parent = player.transform;
         playerCamera.transform.localPosition = playerCameraPosition;
         playerCamera.transform.localEulerAngles = playerCameraRotation;
+
 
         Pause = true;
 
@@ -326,11 +351,11 @@ public class PlayScreen : GameScreen {
 
         playerCamera.transform.parent = transform;
 
+        endlevelInfoBox.AirView = airView;
         endlevelInfoBox.ShowInfo(levelReport);
 
         if (levelSuccess) {
             audioManger.PlayEffect(levelSuccessSound);
-            CrazySDK.Game.HappyTime();
         }
 
         playerCamera.gameObject.SetActive(false);
@@ -340,7 +365,6 @@ public class PlayScreen : GameScreen {
         
         OnShowEndLevelInfo.Invoke();
     }
-
 
     /// <summary>
     /// It truns the roulette.
@@ -381,6 +405,10 @@ public class PlayScreen : GameScreen {
 
         OnEndLevel.Invoke(levelReport);
 
+        if (replayLevel) {
+            inputObserver.OnStartPlayKeyUp.AddListener(LookForBombs);
+        }
+
         StartCoroutine(ResetPlayScreen(replayLevel));
     }
 
@@ -420,9 +448,11 @@ public class PlayScreen : GameScreen {
         bool yDivisibleTwo = coordY % 2 == 0;
         List<Tile> tilesAround = new List<Tile>();
 
-        levelReport.moneyCollected += tile.Reward;
+        if (!player.IsStunned) {
+            levelReport.moneyCollected += tile.Reward;
 
-        player.Pickup();
+            player.Pickup();
+        }
 
         //Add coordY tiles
         if (coordX > 0) {
@@ -465,7 +495,7 @@ public class PlayScreen : GameScreen {
             }
         }
 
-        tile.BombAround = bombsAround;
+        tile.BombsAround = bombsAround;
 
         if (bombsAround == 0) {
             foreach (Tile aTile in tilesAround) {
@@ -556,6 +586,16 @@ public class PlayScreen : GameScreen {
 
     #region Private methods
     /// <summary>
+    /// 
+    /// </summary>
+    public void LookForBombs() {
+        pause = false;
+
+        startlevelInfoBox.ShowInfo(false);
+        inputObserver.OnStartPlayKeyUp.RemoveListener(LookForBombs);
+    }
+
+    /// <summary>
     /// It enables or disables the listeners of the InputObserver.
     /// </summary>
     /// <param name="enable">If true, it enables the listeners.</param>
@@ -615,11 +655,10 @@ public class PlayScreen : GameScreen {
             yield return null;// new WaitForSeconds(1f);
         }
 
-        Pause = true;
         //player.EnableControls = false;
-        startlevelInfoBox.ShowInfo(true);
+        //startlevelInfoBox.ShowInfo(true);
 
-        //mainCamera.gameObject.SetActive(true);
+        mainCamera.gameObject.SetActive(true);
 
         for (int y = 0; y < tilesBySide; y++) {
             currentTilePosition.x = (float)y % 2 / 2;
@@ -638,6 +677,7 @@ public class PlayScreen : GameScreen {
                 currentTile.AudioManager = audioManger;
                 currentTile.transform.position = currentTilePosition;
                 currentTile.Coords = new Vector2(x, y);
+                currentTile.AirView = airView;
 
                 OnExposeTile.Invoke(currentTile);
 
@@ -700,11 +740,12 @@ public class PlayScreen : GameScreen {
     /// has a bomb, the bomb will explode.
     /// </summary>
     /// <returns>deltaLoadTime</returns>
-    private IEnumerator<WaitForSeconds> ExposeAllTiles() {
-        //List<Tile> tilesWithBomb = new List<Tile>();
+    protected IEnumerator<WaitForSeconds> ExposeAllTiles() {
         bool bombFound = false;
 
         foreach (Tile tile in country) {
+            tile.HighLighted = false;
+
             if (!tile.IsMarked && tile.HasBomb) {
                 //tilesWithBomb.Add(tile);
                 if (bombFound == false) {
@@ -712,7 +753,7 @@ public class PlayScreen : GameScreen {
                 }
 
                 tile.Bomb.OnExplode.RemoveAllListeners();
-                
+
                 tile.Bomb.ExplodeBomb();
 
                 OnExplodeBomb.Invoke(tile.Bomb);
@@ -729,10 +770,20 @@ public class PlayScreen : GameScreen {
         }
 
         foreach (Tile tile in country) {
-            if (tile.IsExposed || !tile.IsMarked) {
+            /*if (tile.IsExposed || !tile.IsMarked) {
                 tile.ShowBody(!bombFound);
             }
             else if (tile.IsMarked && !tile.HasBomb) {
+                tile.ShowBody(true);
+            }*/
+            if (bombFound && !tile.HasBomb) {
+                ExposeTile(tile);
+
+                if (tile.IsMarked) {
+                    tile.ShowBody(false);
+                }
+            }
+            else if (!bombFound && !tile.IsMarked) {
                 tile.ShowBody(true);
             }
 
@@ -742,23 +793,6 @@ public class PlayScreen : GameScreen {
         }
 
         EndPlay(!bombFound);
-        /*if (bombFound) {
-            //int lastBombIndex = tilesWithBomb.Count - 1;
-
-            //usedContinues = continues;
-
-            for (int i = 0; i < tilesWithBomb.Count; i++) {
-                tilesWithBomb[i].Bomb.OnExplode.RemoveAllListeners();
-                tilesWithBomb[i].Bomb.ExplodeBomb();
-
-                yield return new WaitForSeconds(deltaLoadTime);
-            }
-
-            EndPlay(false);
-        }
-        else {
-            EndPlay(true);
-        }*/
     }
 
     /// <summary>

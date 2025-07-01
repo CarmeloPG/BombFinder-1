@@ -1,4 +1,3 @@
-using CrazyGames;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -19,8 +18,8 @@ public class MainScreen : GameScreen {
     [Tooltip("Button for play the daily challenge.")]
     private Button playChallengeButton;
     [SerializeField]
-    [Tooltip("Button to play the classic (competition) button.")]
-    private Button playClassicButton;
+    //[Tooltip("Button to play the classic (competition) button.")]
+    private Button exitButton;
     /*[SerializeField]
     [Tooltip("Button to open the requeest logg in window. ")]
     private Button requestLoggInButton;*/
@@ -67,9 +66,15 @@ public class MainScreen : GameScreen {
     public UnityEvent<PlayObjectData> OnEquipPlayObject;
     //[Tooltip("When the player is logged in, it sends the player's data.")]
     //public UnityEvent<PortalUser> OnAuthenticateUser;
-    #endregion
+#endregion
 
-    #region Unity methods
+#region Unity methods
+#if !UNITY_STANDALONE_WIN
+    private void Awake() {
+        exitButton.gameObject.SetActive(false);
+    }
+#endif
+
     private void OnEnable() {
         RenderSettings.skybox = skybox;
 
@@ -83,15 +88,7 @@ public class MainScreen : GameScreen {
     private void OnDisable() {
         audioManager.StopMusic();
     }
-
-    /* private void OnTriggerExit(Collider other) {
-         playerAvatarGround.isTrigger = false;
-
-         Destroy(other.gameObject, 1f);
-         Debug.Log("Change avatar.");
-         playerAvatar.SetActive(true);
-     }*/
-    #endregion
+#endregion
 
     #region Public methods
     /// <summary>
@@ -107,13 +104,13 @@ public class MainScreen : GameScreen {
             interactable = !status.challengeData.overcome;
 
         /*if (status.isLoggedIn) {
-            playClassicButton.interactable = true;
+            exitButton.interactable = true;
             //ShowClassicButton(true);
         }
         else {
-            playClassicButton.interactable = false;
+            exitButton.interactable = false;
 
-            RequestAuthentication();
+            //RequestAuthentication();
             //ShowClassicButton(true);
         }*/
     }
@@ -121,21 +118,21 @@ public class MainScreen : GameScreen {
     /// <summary>
     /// It request to the player logg in Crazy Games account.
     /// </summary>
-    public void RequestAuthentication() {
+    /*public void RequestAuthentication() {
         requestLoggInWindow.Open();
 
         CrazySDK.User.ShowAuthPrompt((error, user) => {
             if (error == null || error.code.Equals("userAlreadySignedIn")) {
-                playClassicButton.interactable = true;
+                exitButton.interactable = true;
                 //ShowClassicButton(true);
             }
             else {
             //if (error != null && error.code.Equals("userCancelled")) {
-                playClassicButton.interactable = false;
+                exitButton.interactable = false;
                 //ShowClassicButton(false);
             }
         });
-    }
+    }*/
 
     /// <summary>
     /// When a level is successful, it updates the
@@ -199,7 +196,7 @@ public class MainScreen : GameScreen {
     /// <param name="show">If false, it shows the request logg in button.</param>
     #region Private methods
     /*private void ShowClassicButton(bool show) {
-        playClassicButton.gameObject.SetActive(show);
+        exitButton.gameObject.SetActive(show);
         requestLoggInButton.gameObject.SetActive(!show);
     }*/
     #endregion

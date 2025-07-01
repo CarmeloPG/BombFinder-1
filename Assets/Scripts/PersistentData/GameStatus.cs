@@ -8,21 +8,16 @@ public class GameStatus {
     public List<string> playerInventory;
 	public ChallengeData challengeData;
     public bool
-		airView,
-		isLoggedIn,
-		musicMuted,
-		effectMuted;
+		//airView,
+		//isLoggedIn,
+		isMusicMuted,
+		isEffectsMuted;
 	public int
 		currentLevel,
 		playerMoney;
-		//lastYearChallenge,
-		//lastMounthChallenge,
-		//lastDayChallenge;
-
-
-	
-
-
+	public float
+		musicVolume,
+		effectsVolume;
 	#endregion
 
 	#region Constructors
@@ -32,17 +27,15 @@ public class GameStatus {
 	public GameStatus() {
 		//DateTime now = DateTime.Now;
 
-		airView = false;
-		isLoggedIn = false;
-		musicMuted = false;
-		effectMuted = false;
+		//airView = false;
+		//isLoggedIn = false;
+		isMusicMuted = false;
+		isEffectsMuted = false;
 		currentLevel = 1;
 		playerMoney = 1000;
 		challengeData = new ChallengeData();
-
-		/*lastYearChallenge = now.Year - 1;
-		lastMounthChallenge = now.Month;
-		lastDayChallenge = now.Day;*/
+		musicVolume = .5f;
+		effectsVolume = .5f;
 
 		equipedObject = Constants.initial_player_id;
 		playerInventory = new List<string> { Constants.initial_player_id };

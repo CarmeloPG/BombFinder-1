@@ -11,8 +11,6 @@ public class Tile : MonoBehaviour, I_MouseClickListner {//, IPointerUpHandler, I
 
     #region Serialize fields
     [SerializeField]
-    private AudioManager audioManager;
-    [SerializeField]
     [Tooltip("Maximum money in the tile.")]
     private int maxReward = 10;
     [SerializeField]
@@ -31,6 +29,9 @@ public class Tile : MonoBehaviour, I_MouseClickListner {//, IPointerUpHandler, I
     [SerializeField]
     [Tooltip("Each gameObject of the array represents a number of bombPrefab that are around of the tile. The index of the array is the number must represents the gameObject.")]
     private GameObject[] bombsAround;
+    [SerializeField]
+    [Tooltip("The game objects witch represnts the number of bombs around of the tile when the game is in air view. It must have the same length as bombsAround.")]
+    private GameObject[] bombsAroundAirView;
 
     [Header("Sounds")]
     [SerializeField]
@@ -42,18 +43,18 @@ public class Tile : MonoBehaviour, I_MouseClickListner {//, IPointerUpHandler, I
     [SerializeField]
     [Tooltip("Effect when the tile is exposed.")]
     private ParticleSystem exposeEffect;
-    /*[SerializeField]
-    [Tooltip("Sound when the tile is dismarked.")]
-    private AudioClip dismarkedSound;
-    [SerializeField]
-    private AudioClip moneySound;*/
     #endregion
 
     #region Private fields
+    private AudioManager audioManager;
     private Bomb bomb;
     private Vector2 coords;
-    private bool isExposed;
-    private int reward;
+    private bool 
+        isExposed,
+        airView;
+    private int 
+        reward,
+        bombsAroundCount;
     #endregion
 
     #region Properties
@@ -73,10 +74,33 @@ public class Tile : MonoBehaviour, I_MouseClickListner {//, IPointerUpHandler, I
         get => isExposed;
     }
 
-    public int BombAround {
+    public bool AirView {
         set {
+            airView = value;
+
+            if (bombsAroundCount > 0) {
+                bombsAround[bombsAroundCount].SetActive(!value);
+                bombsAroundAirView[bombsAroundCount].SetActive(value);
+            }
+        }
+    }
+
+    public bool HighLighted {
+        set => highLightedMark.SetActive(value);
+    }
+
+    public int BombsAround {
+        //get => bombsAroundCount;
+        set {
+            bombsAroundCount = value;
+
+            if (!isExposed) {
+                isExposed = true;
+            }
+
             for (int i = 0; i < bombsAround.Length; i++) {
-                bombsAround[i].SetActive(i == value);
+                bombsAround[i].SetActive((value == 0 && i == value) || (i == value && !airView));
+                bombsAroundAirView[i].SetActive(value > 0 && i == value && airView);
             }
         }
     }
@@ -94,25 +118,6 @@ public class Tile : MonoBehaviour, I_MouseClickListner {//, IPointerUpHandler, I
     public AudioManager AudioManager {
         set => audioManager = value;
     }
-
-    /*public AudioClip ExposeSound {
-        get {
-            if (reward == 0) {
-                return exposeSound;
-            }
-            else {
-                return moneySound;
-            }
-        }
-    }
-
-    public AudioClip MarkSound {
-        get => markedSound;
-    }
-
-    public AudioClip DismarkSound {
-        get => dismarkedSound;
-    }*/
     #endregion
 
     #region Events
@@ -131,10 +136,13 @@ public class Tile : MonoBehaviour, I_MouseClickListner {//, IPointerUpHandler, I
         bomb = null;
         isExposed = false;
         reward = -1;
+        bombsAroundCount = -1;
 
-        if (bombsAround.Length > 0) {
+        ShowBody(false);
+
+        /*if (bombsAround.Length > 0) {
             ShowBody(false);
-        }
+        }*/
     }
 
     /// <summary>
@@ -203,7 +211,7 @@ public class Tile : MonoBehaviour, I_MouseClickListner {//, IPointerUpHandler, I
     /// </summary>
     public void ShowBody(bool show) {
         exposeEffect.Play();        
-        highLightedMark.SetActive(show && IsMarked);
+        highLightedMark.SetActive(!show && IsMarked);
 
         if (bombsAround[0].activeSelf != show) {
             bombsAround[0].SetActive(show);
@@ -211,6 +219,10 @@ public class Tile : MonoBehaviour, I_MouseClickListner {//, IPointerUpHandler, I
 
         for (int i = 1; i < bombsAround.Length; i++) {
             if (bombsAround[i].activeSelf) {
+                bombsAround[i].SetActive(false);
+            }
+
+            if (bombsAroundAirView[i].activeSelf) {
                 bombsAround[i].SetActive(false);
             }
         }
@@ -244,7 +256,7 @@ public class Tile : MonoBehaviour, I_MouseClickListner {//, IPointerUpHandler, I
             moneyBox.ShowMoneyAmount(reward);
             OnExpose.Invoke(this);
         }
-        else { 
+        else {
             bomb.ExplodeBomb();
         }
     }
