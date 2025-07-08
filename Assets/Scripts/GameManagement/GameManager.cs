@@ -81,6 +81,8 @@ public class GameManager : MonoBehaviour {
     /// On awake, it loads the last saved status.
     /// </summary>
     private void Awake() {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
         LoadGameStatus();
     }
     #endregion

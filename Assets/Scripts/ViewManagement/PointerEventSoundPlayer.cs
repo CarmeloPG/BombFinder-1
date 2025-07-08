@@ -39,11 +39,12 @@ public class PointerEventSoundPlayer : MonoBehaviour, IPointerEnterHandler, IPoi
     }
     #endregion
 
+
+    #region Public methods
     /// <summary>
     /// It plays the pointer click sound.
     /// </summary>
     /// <param name="eventData"></param>
-    #region Public methods
     public void OnPointerClick(PointerEventData eventData) {
         audioManager.PlayEffect(pointerClickSound);
     }

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
+using System.ComponentModel.Design;
 
 /// <summary>
 /// In the shop the ball can sell and buy their PlayObjects. 
@@ -74,9 +75,14 @@ public class Shop : MonoBehaviour {
     public UnityEvent<PlayObjectData> OnBuyPlayObject;
     [Tooltip("When a PlayObject is equiped, it sends the data of the equiped PlayObject.")]
     public UnityEvent<PlayObjectData> OnEquipPlayObject;
+    [Tooltip("When a PlayObject of the shop store tab is selected, it sends the data of the selected PlayObject.")]
+    public UnityEvent<PlayObjectData> OnSelectShopPlayObject;
     #endregion
 
     #region Unity methods
+    /// <summary>
+    /// 
+    /// </summary>
     private void OnEnable() {
         ShowGameStoresData();
 
@@ -88,6 +94,9 @@ public class Shop : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     private void OnDisable() {
         shopStoreTab.ClearGameStoreData();
         playerStoreTab.ClearGameStoreData();
@@ -128,7 +137,8 @@ public class Shop : MonoBehaviour {
     /// <param name="playObjectData">The data of selectred PlayObject.</param>
     public void SelectShopPlayObject(PlayObjectData playObjectData) {
         SelectPlayObjectData(playObjectData, buyButttons, playerStore);
-        //ShowSelectedDataPrices(buyButttons, playerStore);
+
+        OnSelectShopPlayObject.Invoke(playObjectData);
     }
 
     /// <summary>

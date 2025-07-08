@@ -2,8 +2,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Mobile compatible character control.
+/// </summary>
 public class SimpleCharacterControl : MonoBehaviour {
     #region Readonly fields
+    private readonly float m_interpolation = 10f;
+    private readonly float m_runScale = 2f; //0.33f;
+    private readonly float m_backwardsWalkScale = 0.33f;
+    private readonly float m_backwardRunScale = 0.66f;
     #endregion
 
     #region Serialize fields
@@ -17,22 +24,14 @@ public class SimpleCharacterControl : MonoBehaviour {
     private float m_jumpForce = 4f;
 
     [SerializeField] 
-    private Animator m_animator = null;
+    private Animator m_animator;
     [SerializeField] 
-    private Rigidbody m_rigidBody = null;
-
-    [SerializeField] 
-    private CharacterControlMode m_controlMode = CharacterControlMode.Direct;
+    private Rigidbody m_rigidBody;
     #endregion
 
     #region Private fields
     private float m_currentV = 0f;
     private float m_currentH = 0f;
-
-    private readonly float m_interpolation = 10f;
-    private readonly float m_walkScale = 2f; //0.33f;
-    private readonly float m_backwardsWalkScale = 0.16f;
-    private readonly float m_backwardRunScale = 0.66f;
 
     private bool m_wasGrounded;
     private Vector3 m_currentDirection = Vector3.zero;
@@ -44,11 +43,26 @@ public class SimpleCharacterControl : MonoBehaviour {
     private bool m_isGrounded;
 
     private List<Collider> m_collisions = new List<Collider>();
+
+    private VirtualControls virtualControls = null;
     #endregion
 
     #region Properties
     public float MoveSpeed {
         set => m_moveSpeed = value;
+    }
+
+    public VirtualControls VirtualControls {
+        set {
+            if (virtualControls == null) {
+                Debug.Log("Joystick is null.");
+            }
+            else {
+                Debug.Log("Joystick already exists.");
+            }
+
+            virtualControls = value;
+        }
     }
     #endregion
 
@@ -59,17 +73,18 @@ public class SimpleCharacterControl : MonoBehaviour {
     #endregion
 
     #region Unity methods
-    private void Awake() {
+    /*private void Awake() {
         if (!m_animator) {
             gameObject.GetComponent<Animator>();
         }
         if (!m_rigidBody) {
             gameObject.GetComponent<Animator>();
         }
-    }
+    }^*/
 
     private void OnCollisionEnter(Collision collision) {
-        ContactPoint[] contactPoints = collision.contacts;
+        m_isGrounded = true;
+        /*ContactPoint[] contactPoints = collision.contacts;
         for (int i = 0; i < contactPoints.Length; i++) {
             if (Vector3.Dot(contactPoints[i].normal, Vector3.up) > 0.5f) {
                 if (!m_collisions.Contains(collision.collider)) {
@@ -77,11 +92,14 @@ public class SimpleCharacterControl : MonoBehaviour {
                 }
                 m_isGrounded = true;
             }
-        }
+        }*/
     }
 
     private void OnCollisionStay(Collision collision) {
-        ContactPoint[] contactPoints = collision.contacts;
+        if (!m_isGrounded) {
+            m_isGrounded = true;
+        }
+        /*ContactPoint[] contactPoints = collision.contacts;
         bool validSurfaceNormal = false;
         for (int i = 0; i < contactPoints.Length; i++) {
             if (Vector3.Dot(contactPoints[i].normal, Vector3.up) > 0.5f) {
@@ -103,16 +121,17 @@ public class SimpleCharacterControl : MonoBehaviour {
             if (m_collisions.Count == 0) {
                 m_isGrounded = false;
             }
-        }
+        }*/
     }
 
     private void OnCollisionExit(Collision collision) {
-        if (m_collisions.Contains(collision.collider)) {
+        m_isGrounded = false;
+        /*if (m_collisions.Contains(collision.collider)) {
             m_collisions.Remove(collision.collider);
         }
         if (m_collisions.Count == 0) {
             m_isGrounded = false;
-        }
+        }*/
     }
 
     private void Update() {
@@ -122,52 +141,85 @@ public class SimpleCharacterControl : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (m_animator != null) {
-            m_animator.SetBool("Grounded", m_isGrounded);
+        if (virtualControls == null) {
+            ControlCharacter(
+                Input.GetAxis("Vertical"),
+                Input.GetAxis("Horizontal"),
+                Input.GetKey(KeyCode.LeftShift));
+        }
+        else {
+            ControlCharacter(
+                virtualControls.VerticalAxis,
+                virtualControls.HorizontalAxis,
+                virtualControls.Run);
+        }
+    }
+    #endregion
+
+    #region Public methods
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="verticalAxis"></param>
+    /// <param name="horizontalAxis"></param>
+    /// <param name="run"></param>
+    public void ControlCharacter(float verticalAxis, float horizontalAxis, bool run) {
+        m_animator.SetBool("Grounded", m_isGrounded);
+
+        if (verticalAxis < 0) {
+            if (run) {
+                verticalAxis *= m_backwardRunScale;
+            }
+            else {
+                verticalAxis *= m_backwardsWalkScale;
+            }
+        }
+        else if (run) {
+            verticalAxis *= m_runScale;
         }
 
-        switch (m_controlMode) {
-            case CharacterControlMode.Direct:
-                DirectUpdate();
-                break;
+        m_currentV = Mathf.Lerp(m_currentV, verticalAxis, Time.deltaTime * m_interpolation);
+        m_currentH = Mathf.Lerp(m_currentH, horizontalAxis, Time.deltaTime * m_interpolation);
 
-            case CharacterControlMode.Tank:
-                TankUpdate();
-                break;
+        transform.position += transform.forward * m_currentV * m_moveSpeed * Time.deltaTime;
+        transform.Rotate(0, m_currentH * m_turnSpeed * Time.deltaTime, 0);
 
-            default:
-                Debug.LogError("Unsupported state");
-                break;
+        if (verticalAxis == 0f) {
+            m_animator.SetFloat("MoveSpeed", 0f);
         }
+        else if (verticalAxis > 0f) {
+            m_animator.SetFloat("MoveSpeed", m_currentV);
+        }
+        else {
+            m_animator.SetFloat("MoveSpeed", -m_currentV);
+        }
+
+        //JumpingAndLanding();
 
         m_wasGrounded = m_isGrounded;
         m_jumpInput = false;
     }
     #endregion
 
-    #region Public methods
-    #endregion
-
     #region Protected methods
     #endregion
 
     #region Private methods
-    private void TankUpdate() {
+    /*private void TankUpdate() {
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
-
-        bool walk = Input.GetKey(KeyCode.LeftShift);
+        bool run = Input.GetKey(KeyCode.LeftShift);
 
         if (v < 0) {
-            if (walk) {
-                v *= m_backwardsWalkScale;
-            }
-            else {
+            if (run) {
                 v *= m_backwardRunScale;
             }
+            else {
+                v *= m_backwardsWalkScale;
+            }
         }
-        else if (walk) {
-            v *= m_walkScale;
+        else if (run) {
+            v *= m_runScale;
         }
 
         m_currentV = Mathf.Lerp(m_currentV, v, Time.deltaTime * m_interpolation);
@@ -175,10 +227,6 @@ public class SimpleCharacterControl : MonoBehaviour {
 
         transform.position += transform.forward * m_currentV * m_moveSpeed * Time.deltaTime;
         transform.Rotate(0, m_currentH * m_turnSpeed * Time.deltaTime, 0);
-
-        /*if (m_animator != null) {
-            m_animator.SetFloat("MoveSpeed", m_currentV);
-        }*/
 
         if (v == 0f) {
             m_animator.SetFloat("MoveSpeed", 0f);
@@ -193,21 +241,20 @@ public class SimpleCharacterControl : MonoBehaviour {
         JumpingAndLanding();
     }
 
-    private void DirectUpdate() {
-        float v = Input.GetAxis("Vertical");
-        float h = Input.GetAxis("Horizontal");
+    private void MobileUpdate() {
+        float v = joystick.Vertical;
+        float h = joystick.Horizontal;
+        bool run = joystick.Run;
 
-        Transform camera = Camera.main.transform;
-
-        if (Input.GetKey(KeyCode.LeftShift)) {
-            v *= m_walkScale;
-            h *= m_walkScale;
+        if (run) {
+            v *= m_runScale;
+            h *= m_runScale;
         }
 
         m_currentV = Mathf.Lerp(m_currentV, v, Time.deltaTime * m_interpolation);
         m_currentH = Mathf.Lerp(m_currentH, h, Time.deltaTime * m_interpolation);
 
-        Vector3 direction = camera.forward * m_currentV + camera.right * m_currentH;
+        Vector3 direction = Vector3.forward * m_currentV + Vector3.right * m_currentH;
 
         float directionLength = direction.magnitude;
         direction.y = 0;
@@ -225,7 +272,7 @@ public class SimpleCharacterControl : MonoBehaviour {
         }
 
         JumpingAndLanding();
-    }
+    }*/
 
     private void JumpingAndLanding() {
         bool jumpCooldownOver = (Time.time - m_jumpTimeStamp) >= m_minJumpInterval;

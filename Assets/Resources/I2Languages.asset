@@ -1400,21 +1400,20 @@ MonoBehaviour:
         will explode.
       - "Un nivel termina cuando se gasta la \xFAltima marca de bomba. En ese momento
         se descubrir\xE1n todas las baldosas que no est\xE9n marcadas, si alguna
-        baldosa no marcada tiene bomba, explotar\xE1n todas las minas del campo."
+        baldosa no marcada tiene bomba, explotar\xE1n todas las bombas del campo."
       Flags: 0000
       Languages_Touch: []
     - Term: Msg_MobileBomb
       TermType: 0
       Description: 
       Languages:
-      - 'Mobile bombs
-
+      - 'Mobile bombs:
 
         Starting at level 5 mobile bombs apears on the field.
         If a mobile bomb hits the avatar, all bombs on the field will explode. The
         frecuency with which mobile bombs apear increases with level.'
-      - "Bombas m\xF3viles:\n\nA partir del nivel 5 aparecen bombas m\xF3viles en
-        el campo. Si una bomba m\xF3vil choca contra el avatar, explotar\xE1n todas
+      - "Bombas m\xF3viles:\nA partir del nivel 5 aparecen bombas m\xF3viles en el
+        campo. Si una bomba m\xF3vil choca contra el avatar, explotar\xE1n todas
         las bombas del campo. La frecuencia con la que aparecen bombas m\xF3viles
         aumenta con el nivel. "
       Flags: 0000
@@ -1718,6 +1717,14 @@ MonoBehaviour:
       - Saltar
       Flags: 0000
       Languages_Touch: []
+    - Term: RotateAvatar
+      TermType: 0
+      Description: 
+      Languages:
+      - Rotate avatar
+      - Rotar avatar
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 3
     mTerm_AppName: 
@@ -1728,7 +1735,7 @@ MonoBehaviour:
     - Name: Spanish
       Code: es
       Flags: 0
-    IgnoreDeviceLanguage: 1
+    IgnoreDeviceLanguage: 0
     _AllowUnloadingLanguages: 0
     Google_WebServiceURL: 
     Google_SpreadsheetKey: 

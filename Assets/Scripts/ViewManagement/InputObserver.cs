@@ -62,28 +62,28 @@ public class InputObserver : MonoBehaviour {
     /// or released a key or a mouse button.
     /// </summary>
     private void Update() {
-        if (Input.GetKeyUp(pauseKey)) {
-            OnPauseKeyUp.Invoke();
-        }
-
-        if (Input.GetKeyUp(startPlayKey)) {
-            OnStartPlayKeyUp.Invoke();
-        }
-
-        if (isEnabled) {
-            if (Input.GetMouseButtonUp(leftMouseButton) 
-                || Input.GetKeyUp(exposeTileKey)) 
-            {
-                OnExposeTileKeyUp.Invoke();
-            }
-            else if (Input.GetMouseButtonUp(rightMouseButton) 
-                     || Input.GetKeyUp(markTileKey)) 
-            {
-                OnMarkTileKeyUp.Invoke();
+        if (!Application.isMobilePlatform) {
+            if (Input.GetKeyUp(pauseKey)) {
+                OnPauseKeyUp.Invoke();
             }
 
-            if (Input.GetKeyUp(changeViewKey)) {
-                OnChangeViewKeyUp.Invoke();
+            if (Input.GetKeyUp(startPlayKey)) {
+                OnStartPlayKeyUp.Invoke();
+            }
+
+            if (isEnabled) {
+                if (Input.GetMouseButtonUp(leftMouseButton)
+                    || Input.GetKeyUp(exposeTileKey)) {
+                    OnExposeTileKeyUp.Invoke();
+                }
+                else if (Input.GetMouseButtonUp(rightMouseButton)
+                         || Input.GetKeyUp(markTileKey)) {
+                    OnMarkTileKeyUp.Invoke();
+                }
+
+                if (Input.GetKeyUp(changeViewKey)) {
+                    OnChangeViewKeyUp.Invoke();
+                }
             }
         }
     }

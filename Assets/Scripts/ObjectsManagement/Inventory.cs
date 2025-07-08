@@ -45,6 +45,7 @@ public class Inventory : GameStore {
 
             newObject.transform.SetParent(transform);
 
+            newObject.Stun(false);
             newObject.ResetTransform();
             newObject.Show(false);
             

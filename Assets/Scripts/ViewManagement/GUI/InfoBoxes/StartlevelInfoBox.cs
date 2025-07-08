@@ -15,18 +15,6 @@ public class StartlevelInfoBox : MonoBehaviour {
     private TextMeshProUGUI tilesCountText;
     [SerializeField]
 	private TextMeshProUGUI bombsCountText;
-
-    /*[Header("Screen")]
-    [SerializeField]
-	private Image screenIconImage;
-    [SerializeField]
-    private Localize screenNameText;
-
-    [Header("Player")]
-    [SerializeField]
-    private Image playerIconImage;
-    [SerializeField]
-    private Localize playerNameText;*/
     #endregion
 
     #region Private fields

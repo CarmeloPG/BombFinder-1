@@ -18,6 +18,8 @@ public class PlayScreen : GameScreen {
     [Header("Controls")]
     [SerializeField]
     protected InputObserver inputObserver;
+    [SerializeField]
+    private VirtualControls virtualControls;
 
     [Header("Rewards")]
     [SerializeField]
@@ -161,31 +163,27 @@ public class PlayScreen : GameScreen {
 
             inputObserver.IsEnabled = !pause;
 
-            player.EnableControls = !pause;
-
+            if (!Application.isMobilePlatform) {
+                player.EnableControls = !pause;
+            }
+                        
             if (!pause && player.IsStunned) {
                 player.transform.position += Vector3.up;
 
                 player.Stun(false); 
             }
-            //player.Show(!pause);
-
+            
             mainCamera.gameObject.SetActive(pause);
             airCamera.gameObject.SetActive(!pause && airView);
             playerCamera.gameObject.SetActive(!pause && !airView);
 
-                /*if (airView) {
-                    airCamera.gameObject.SetActive(!pause);
+            if (!Application.isMobilePlatform) {
+                if (pause == true) {
+                    Cursor.lockState = CursorLockMode.None;
                 }
                 else {
-                    playerCamera.gameObject.SetActive(!pause);
-                }*/
-
-            if (pause == true) {
-                Cursor.lockState = CursorLockMode.None;
-            }
-            else {
-                Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
             }
         }
     }
@@ -311,7 +309,7 @@ public class PlayScreen : GameScreen {
 
         player.transform.parent = stage;
         player.transform.localPosition = initialPlayerPosition;
-        player.transform.localRotation = Quaternion.identity;
+        player.transform.localRotation = Quaternion.Euler(0f, 45f, 0f);
 
         levelReport.player = player;
         levelReport.levelSuccess = false;
@@ -320,6 +318,9 @@ public class PlayScreen : GameScreen {
         playerCamera.transform.localPosition = playerCameraPosition;
         playerCamera.transform.localEulerAngles = playerCameraRotation;
 
+        if (Application.isMobilePlatform) {
+            player.GetComponent<SimpleCharacterControl>().VirtualControls = virtualControls;
+        }
 
         Pause = true;
 
@@ -350,6 +351,7 @@ public class PlayScreen : GameScreen {
             levelReport.levelEndReward + levelReport.moneyCollected;
 
         playerCamera.transform.parent = transform;
+        playerCamera.transform.position = mainCamera.transform.position;
 
         endlevelInfoBox.AirView = airView;
         endlevelInfoBox.ShowInfo(levelReport);
@@ -358,8 +360,10 @@ public class PlayScreen : GameScreen {
             audioManger.PlayEffect(levelSuccessSound);
         }
 
-        playerCamera.gameObject.SetActive(false);
-        mainCamera.gameObject.SetActive(true);
+        if (!airView) {
+            playerCamera.gameObject.SetActive(false);
+            mainCamera.gameObject.SetActive(true);
+        }
 
         EnableInput(false);
         
@@ -559,7 +563,10 @@ public class PlayScreen : GameScreen {
     /// <summary>
     /// If the player falls to the deep, it puts the player
     /// on the initial player position.
-    /// </summary>
+    /// </summary
+    ///  
+    /// +
+    ///  >
     protected void CheckPlayerPosition() {
         if (player.transform.position.y < 0) {
             player.transform.position = initialPlayerPosition;
@@ -600,6 +607,10 @@ public class PlayScreen : GameScreen {
     /// </summary>
     /// <param name="enable">If true, it enables the listeners.</param>
     private void EnableInput(bool enable) {
+        if (Application.isMobilePlatform) {
+            virtualControls.gameObject.SetActive(enable);
+        }
+
         if (enable) {
             inputObserver.OnChangeViewKeyUp.AddListener(delegate {
                 AirView = !airView;
@@ -714,7 +725,7 @@ public class PlayScreen : GameScreen {
         Pause = false;
 
         EnableInput(true);
-
+        
         player.Show(true);
         startlevelInfoBox.ShowInfo(false);
         playLevelInfoBox.SetActive(true);

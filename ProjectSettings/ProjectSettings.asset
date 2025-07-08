@@ -8,7 +8,7 @@ PlayerSettings:
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
-  defaultScreenOrientation: 4
+  defaultScreenOrientation: 3
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
@@ -161,7 +161,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.marshellcomp.nubelastica
+    Android: com.cuatrogatos.bombfinder
     Standalone: com.carmelosevenseven.bombfinder
   buildNumber:
     Standalone: 1
@@ -171,7 +171,7 @@ PlayerSettings:
   overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 22
-  AndroidTargetSdkVersion: 0
+  AndroidTargetSdkVersion: 36
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   stripEngineCode: 1
@@ -259,12 +259,12 @@ PlayerSettings:
   useCustomGradlePropertiesTemplate: 0
   useCustomGradleSettingsTemplate: 0
   useCustomProguardFile: 0
-  AndroidTargetArchitectures: 5
+  AndroidTargetArchitectures: 15
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: B:/Apuntes/Curso Unity/Unity projects/Cama Elastica/Nub.keystore
-  AndroidKeyaliasName: marshell
+  AndroidKeystoreName: C:/Cuatro Gatos Studio/RoutinaIncKeystore.keystore
+  AndroidKeyaliasName: routinainc
   AndroidEnableArmv9SecurityFeatures: 0
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 1
@@ -276,7 +276,7 @@ PlayerSettings:
   m_AndroidBanners:
   - width: 320
     height: 180
-    banner: {fileID: 2800000, guid: eb733489b013f98428da03d44af1d190, type: 3}
+    banner: {fileID: 2800000, guid: 6adbf667448cfce4ea2b2cd656e3274b, type: 3}
   androidGamepadSupportLevel: 0
   chromeosInputEmulation: 1
   AndroidMinifyRelease: 0
@@ -294,7 +294,9 @@ PlayerSettings:
   m_BuildTargetPlatformIcons:
   - m_BuildTarget: Android
     m_Icons:
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: bb89ed88960aabc4a92e46b472c17fd9, type: 3}
+      - {fileID: 2800000, guid: bb89ed88960aabc4a92e46b472c17fd9, type: 3}
       m_Width: 432
       m_Height: 432
       m_Kind: 2
@@ -324,7 +326,8 @@ PlayerSettings:
       m_Height: 81
       m_Kind: 2
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: bb89ed88960aabc4a92e46b472c17fd9, type: 3}
       m_Width: 192
       m_Height: 192
       m_Kind: 1
@@ -354,7 +357,8 @@ PlayerSettings:
       m_Height: 36
       m_Kind: 1
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: bb89ed88960aabc4a92e46b472c17fd9, type: 3}
       m_Width: 192
       m_Height: 192
       m_Kind: 0
@@ -839,6 +843,7 @@ PlayerSettings:
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
+    Android: 1
     Standalone: 1
   il2cppCompilerConfiguration: {}
   il2cppCodeGeneration:
@@ -948,11 +953,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 902081ab-885c-45e8-9188-f662db7d2fde
+  cloudProjectId: 
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: BombFinder
-  organizationId: infierno66
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

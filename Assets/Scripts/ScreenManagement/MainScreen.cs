@@ -50,9 +50,11 @@ public class MainScreen : GameScreen {
     #endregion
 
     #region Private fields
-    //The player avatar. This avatar is a copy of the real player avatar.
-    private GameObject playerAvatar;
     private AudioManager audioManager;
+    //The player avatar. This avatar is a copy of the real player avatar.
+    private GameObject 
+        playerAvatar,
+        previewAvatar;
     #endregion
 
     #region Properties
@@ -184,18 +186,51 @@ public class MainScreen : GameScreen {
     public void ChangePlayerMoney(MoneyType moneyType, int newAmount) {
         playerMoneyInfo.ShowMoneyAmount(moneyType, newAmount);
     }
+
+    /// <summary>
+    /// When an avatar is selected in the shop. it hides the player avatar and
+    /// shows a preview of the selected avatar.
+    /// 
+    /// If the selected avatar is null it shows the player avatar.
+    /// </summary>
+    /// <param name="avatarData"></param>
+    public void ShowPreviewAvatar(PlayObjectData avatarData) {
+        if (avatarData == null) {
+            playerAvatar.SetActive(true);
+
+            if (previewAvatar != null) {
+                previewAvatar.SetActive(false);
+            }
+        }
+        else {
+            playerAvatar.SetActive(false);
+
+            if (previewAvatar != null) { 
+                DestroyImmediate(previewAvatar);
+            }
+
+            previewAvatar = Instantiate(avatarData.GameObject, playerAvatarPlace);
+            previewAvatar.transform.position = playerAvatar.transform.position + (Vector3.up / 2);
+
+            previewAvatar.SetActive(true);
+            previewAvatar.GetComponent<SimpleCharacterControl>().MoveSpeed = 0f;
+
+        }
+    }
     #endregion
 
     #region Protected methods
     #endregion
 
+    #region Private methods
+    /*
     /// <summary>
     /// When it shows the classic button, it hides the 
     /// request loggin button.
     /// </summary>
     /// <param name="show">If false, it shows the request logg in button.</param>
-    #region Private methods
-    /*private void ShowClassicButton(bool show) {
+
+    private void ShowClassicButton(bool show) {
         exitButton.gameObject.SetActive(show);
         requestLoggInButton.gameObject.SetActive(!show);
     }*/

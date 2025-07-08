@@ -61,6 +61,23 @@ public class GameStoreTab : MonoBehaviour {
     #endregion
 
     #region Unity methods
+    /*/// <summary>
+    /// 
+    /// </summary>
+    private void OnEnable() {
+        ShowGameStoreData();
+    }*/
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void OnDisable() {
+        PlayObjectSelected.Invoke(null);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
     private void OnDestroy() {
         gameStore.OnChangeMoney.RemoveListener(ChangeGameStoreMoney);
     }

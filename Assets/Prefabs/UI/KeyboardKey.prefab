@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5910793642658036052}
   - component: {fileID: 2109612231796702570}
   m_Layer: 5
-  m_Name: Letter
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4292993505
   m_fontColor: {r: 0.88235295, g: 0.88235295, b: 0.88235295, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 23.3
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 473246913092662815}
   - component: {fileID: 1959570883461498956}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 52db5ecc387d1df4f8040992f53f9d9f, type: 3}
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
