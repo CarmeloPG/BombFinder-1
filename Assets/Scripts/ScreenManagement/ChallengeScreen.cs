@@ -138,8 +138,6 @@ public class ChallengeScreen : PlayScreen {
     public override void EndPlay(bool levelSuccess) {
         base.EndPlay(levelSuccess);
 
-        Debug.Log("Dificulty index: " + dificultyIndex);
-
         levelReport.moneyCollected *= dificultyIndex;
         levelReport.levelEndReward *= dificultyIndex;
         levelReport.totalReward *= dificultyIndex;

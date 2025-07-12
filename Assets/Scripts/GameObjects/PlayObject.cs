@@ -52,7 +52,7 @@ public class PlayObject : MonoBehaviour
 	}
 
 	public Vector3 Velocity {
-		set => rigidBody.velocity = value;
+		set => rigidBody.linearVelocity = value;
 	}
 
 	public bool EnableControls { 

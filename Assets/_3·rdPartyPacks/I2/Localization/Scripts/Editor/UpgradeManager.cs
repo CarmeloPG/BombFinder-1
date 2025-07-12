@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEditor;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEditor.Build;
+using System;
 
 namespace I2.Loc
 {
@@ -93,23 +95,27 @@ namespace I2.Loc
 				if (!AutoEnablePlugins)
 					return;
 			}
-			//var tar = System.Enum.GetValues(typeof(BuildTargetGroup));
-			foreach (BuildTargetGroup target in System.Enum.GetValues(typeof(BuildTargetGroup)))
-				if (target!=BuildTargetGroup.Unknown && !target.HasAttributeOfType<System.ObsoleteAttribute>())
-				{
-					#if UNITY_5_6
+			NamedBuildTarget target;
+			foreach (BuildTargetGroup targetGroup in System.Enum.GetValues(typeof(BuildTargetGroup))) {
+				try {
+					target = NamedBuildTarget.FromBuildTargetGroup(targetGroup);
+					if (target != NamedBuildTarget.Unknown /*&& !target.HasAttributeOfType<System.ObsoleteAttribute>()*/) {
+#if UNITY_5_6
 						if (target == BuildTargetGroup.Switch) continue;    // some releases of 5.6 defined BuildTargetGroup.Switch but didn't handled it correctly
-					#endif
-					EnablePluginsOnPlatform( target );
+#endif
+						EnablePluginsOnPlatform(target);
+					}
 				}
+				catch { }
+			}
 
 			// Force these one (iPhone has the same # than iOS and iPhone is deprecated, so iOS was been skipped)
-			EnablePluginsOnPlatform(BuildTargetGroup.iOS);
+			EnablePluginsOnPlatform(NamedBuildTarget.iOS);
 		}
 
-		static void EnablePluginsOnPlatform( BuildTargetGroup Platform )
+		static void EnablePluginsOnPlatform( NamedBuildTarget Platform )
 		{
-			string Settings = PlayerSettings.GetScriptingDefineSymbolsForGroup(Platform );
+			string Settings = PlayerSettings.GetScriptingDefineSymbols(Platform);//PlayerSettings.GetScriptingDefineSymbolsForGroup(Platform );
 			
 			bool HasChanged = false;
 			List<string> symbols = new List<string>( Settings.Split(';'));
@@ -130,7 +136,7 @@ namespace I2.Loc
 						if (i>0) Settings += ";";
 						Settings += symbols[i];
 					}
-					PlayerSettings.SetScriptingDefineSymbolsForGroup(Platform, Settings );
+					PlayerSettings.SetScriptingDefineSymbols(Platform, Settings );
 				}
 				catch (System.Exception)
 				{
@@ -181,7 +187,7 @@ namespace I2.Loc
 			if (LocalizationManager.GlobalSources==null || LocalizationManager.GlobalSources.Length==0)
 				return;
 			
-			Object GlobalSource = Resources.Load(LocalizationManager.GlobalSources[0]);
+			UnityEngine.Object GlobalSource = Resources.Load(LocalizationManager.GlobalSources[0]);
             LanguageSourceData sourceData = null;
             string sourcePath = null;
 

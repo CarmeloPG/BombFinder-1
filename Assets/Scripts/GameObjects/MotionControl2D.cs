@@ -31,11 +31,11 @@ public class MotionControl2D : MonoBehaviour {
     private void Update() {
         xAxis = Input.GetAxis(Constants.horizontal_axis);
                 
-        if (xAxis == 0 && target.velocity != Vector3.zero) {
-            target.velocity = Vector2.zero;
+        if (xAxis == 0 && target.linearVelocity != Vector3.zero) {
+            target.linearVelocity = Vector2.zero;
         }
         else if (xAxis != 0) {
-            target.velocity = Vector2.right * xAxis * velocity;
+            target.linearVelocity = Vector2.right * xAxis * velocity;
         }
     }
     #endregion

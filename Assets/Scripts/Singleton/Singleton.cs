@@ -39,7 +39,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                 // Check if static instance is initialized.
                 if (Singleton<T>.instance == null)
                 {
-                    T[] singletonObjects = UnityEngine.Object.FindObjectsOfType<T>();
+                    T[] singletonObjects = FindObjectsByType<T>(FindObjectsSortMode.None);
                     
                     // Check if there is at least one instance of the singleton object in the current scene.
                     if (singletonObjects.Length > 0)
