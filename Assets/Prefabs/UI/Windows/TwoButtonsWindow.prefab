@@ -77,6 +77,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1103360512193826933, guid: 349ce2d636e881745a7da01e5b36ec15,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103360512193826933, guid: 349ce2d636e881745a7da01e5b36ec15,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 2779328450010921388, guid: 349ce2d636e881745a7da01e5b36ec15,
         type: 3}
       propertyPath: m_Name
