@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections;
+using UnityEngine.InputSystem;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
@@ -9,13 +9,13 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class InputObserver : MonoBehaviour {
     #region Readonly fields
-    private readonly int
+    /*private readonly int
         leftMouseButton = (int)PointerEventData.InputButton.Left,
-        rightMouseButton = (int)PointerEventData.InputButton.Right;
+        rightMouseButton = (int)PointerEventData.InputButton.Right;*/
     #endregion
 
     #region Serialize fields
-    [SerializeField]
+    /*[SerializeField]
     private KeyCode pauseKey;
     [SerializeField]
     private KeyCode changeViewKey;
@@ -24,12 +24,18 @@ public class InputObserver : MonoBehaviour {
     [SerializeField]
     private KeyCode markTileKey;
     [SerializeField]
-    private KeyCode startPlayKey;
+    private KeyCode startPlayKey;*/
     #endregion
 
     #region Private fields
     //If it's enabled, it responses to the player controls.
     private bool isEnabled;
+    private InputAction
+        pauseAction,
+        changeViewAction,
+        exposeTileAction,
+        markTileAction,
+        startPlayAction;
     #endregion
 
     #region Properties
@@ -58,35 +64,70 @@ public class InputObserver : MonoBehaviour {
 
     #region Unity methods
     /// <summary>
+    /// 
+    /// </summary>
+    private void Awake() {
+        pauseAction = InputSystem.actions.FindAction("Pause");
+        changeViewAction = InputSystem.actions.FindAction("ChangeView");
+        exposeTileAction = InputSystem.actions.FindAction("ExposeTile");
+        markTileAction = InputSystem.actions.FindAction("MarkTile");
+        startPlayAction = InputSystem.actions.FindAction("StartPlay");
+        
+        if (!Application.isMobilePlatform) {
+            pauseAction.performed += delegate {
+                OnPauseKeyUp.Invoke();
+            };
+
+            startPlayAction.performed += delegate {
+                OnStartPlayKeyUp.Invoke();
+            };
+
+            exposeTileAction.performed += delegate {
+                if (isEnabled) {
+                    OnExposeTileKeyUp.Invoke();
+                }
+            };
+
+            markTileAction.performed += delegate {
+                if (isEnabled) {
+                    OnMarkTileKeyUp.Invoke();
+                }
+            };
+
+            changeViewAction.performed += delegate {
+                OnChangeViewKeyUp.Invoke();
+            };
+        }
+    }
+
+    /// <summary>
     /// On update, it checks if the play has pressed
     /// or released a key or a mouse button.
     /// </summary>
-    private void Update() {
+    /*private void Update() {
         if (!Application.isMobilePlatform) {
-            if (Input.GetKeyUp(pauseKey)) {
+            pauseAction.performed += delegate {
                 OnPauseKeyUp.Invoke();
-            }
+            };
 
-            if (Input.GetKeyUp(startPlayKey)) {
+            if (startPlayAction.ReadValue<float>() > 0f) {
                 OnStartPlayKeyUp.Invoke();
             }
 
             if (isEnabled) {
-                if (Input.GetMouseButtonUp(leftMouseButton)
-                    || Input.GetKeyUp(exposeTileKey)) {
+                if (exposeTileAction.ReadValue<float>() > 0f) {
                     OnExposeTileKeyUp.Invoke();
                 }
-                else if (Input.GetMouseButtonUp(rightMouseButton)
-                         || Input.GetKeyUp(markTileKey)) {
+                else if (markTileAction.ReadValue<float>() > 0f) {
                     OnMarkTileKeyUp.Invoke();
                 }
 
-                if (Input.GetKeyUp(changeViewKey)) {
+                if (changeViewAction.ReadValue<float>() > 0f) {
                     OnChangeViewKeyUp.Invoke();
                 }
             }
         }
-    }
+    }*/
     #endregion
 
     #region Public methods

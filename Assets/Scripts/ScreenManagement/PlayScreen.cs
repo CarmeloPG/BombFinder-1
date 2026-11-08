@@ -5,15 +5,15 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class PlayScreen : GameScreen {
+public abstract class PlayScreen : GameScreen {
     #region Readonly fields
-    //When the player uses a power-up it will mark bombsCount * powerUpMultiplier bombs.
-    //private readonly float powerUpMultiplier = .2f;
     #endregion
 
     #region Serialize fields
     [SerializeField]
     protected AudioManager audioManger;
+    [SerializeField]
+    protected GameManager gameManager;
 
     [Header("Controls")]
     [SerializeField]
@@ -24,22 +24,18 @@ public class PlayScreen : GameScreen {
     [Header("Rewards")]
     [SerializeField]
     protected int levelSuccessReward = 1500;
-    [SerializeField]
-    protected int levelFailedReward = 200;
 
     [Header("Camera options")]
     [SerializeField]
     private Camera mainCamera;
     [SerializeField]
-    private Camera playerCamera;
+    private TrackingObject playerCamera;
     [SerializeField]
     private Camera airCamera;
     [SerializeField]
     private Vector3 playerCameraPosition;
     [SerializeField]
     private Vector3 playerCameraRotation;
-    //[SerializeField]
-    //private Vector3 airCameraPosition;
 
     [Header("Satge configuration")]
     [SerializeField]
@@ -62,9 +58,6 @@ public class PlayScreen : GameScreen {
     [Range(.2f, .3f)]
     [Tooltip("The maximum bombs density of the country.")]
     protected float maxBombDensity;
-    //[SerializeField]
-    //[Tooltip("Every few levels a tile is added to the sides of the country.")]
-    //private int adTileLevels;
     [SerializeField]
     [Tooltip("The size of any tile. All tiles must be the same size.")]
     private float tileSize = 1f;
@@ -84,6 +77,9 @@ public class PlayScreen : GameScreen {
     [Tooltip("The posible skyboxes in the scene.")]
     [SerializeField]
     private Material[] skyboxes;
+    [Tooltip("The time interval, in seconds, between interstitial ads.")]
+    [SerializeField]
+    private float timeBetweenInterstials = 900f;
 
     [Header("GUI options")]
     [SerializeField]
@@ -107,19 +103,11 @@ public class PlayScreen : GameScreen {
     [SerializeField]
     private Roulette roulette;
 
-    /*[Header("Music")]
-    [SerializeField]
-    private AudioClip levelPlayMusic;
-    [SerializeField]
-    private AudioClip levelEndMusic;*/
-
     [Header("Audio")]
     //[SerializeField]
     ///private AudioClip levelMusic;
     [SerializeField]
     private AudioClip levelSuccessSound;
-    //[SerializeField]
-    //private AudioClip levelFailedSound;
     #endregion
 
     #region Protected fields
@@ -128,7 +116,8 @@ public class PlayScreen : GameScreen {
     protected PlayObject player;
     protected bool
         pause,
-        airView;
+        airView,
+        playEnded;
     protected int
         time,
         usedContinues,
@@ -139,8 +128,10 @@ public class PlayScreen : GameScreen {
     #endregion
 
     #region Private fields
+    //private GameObject environment;
+    private SimpleCharacterControl playerControls;
+    private AdsManager adsManager;
     private float deltaLoadTime;
-    private Material skybox;
     #endregion
 
     #region Properties
@@ -197,7 +188,6 @@ public class PlayScreen : GameScreen {
     }
 
     public int TilesBySide {
-        //get => tilesBySide;
         set {
             Vector3 mainCameraPosition = mainCamera.transform.position;
             float center = value / 2;
@@ -206,15 +196,12 @@ public class PlayScreen : GameScreen {
             tilesCount = tilesBySide * tilesBySide;
             deltaLoadTime = loadTime / tilesCount;
 
-            //center = tilesBySide / 2;
             airCamera.orthographicSize = (tilesBySide / 2) + 1;
             airCamera.transform.position = 
                 new Vector3(center, center, center);
 
-            mainCamera.transform.position = new Vector3(
-                center,
-                center,
-                -center);
+            mainCamera.transform.position = 
+                new Vector3(center,center,-center);
         }
     }
 
@@ -222,15 +209,18 @@ public class PlayScreen : GameScreen {
         set {
             airView = value;
 
-            /*if (!endlevelInfoBox.gameObject.activeSelf) {
-                levelReport.airView = airView;
-            }*/
-
             airCamera.gameObject.SetActive(airView);
 
             if (player != null && country != null) {
-                playerCamera.gameObject.SetActive(!airView && !player.IsStunned);
-                mainCamera.gameObject.SetActive(!airView && player.IsStunned);
+                inputObserver.IsEnabled = !airView;
+                playerControls.enabled = !airView;
+
+                if (Application.isMobilePlatform) {
+                    virtualControls.IsEnabled = !airView;
+                }
+
+                playerCamera.gameObject.SetActive(!airView && !playEnded);
+                mainCamera.gameObject.SetActive(!airView && playEnded);
 
                 if (!levelReport.levelSuccess) {
                     foreach (Tile tile in country) {
@@ -275,37 +265,39 @@ public class PlayScreen : GameScreen {
 
     #region Unity methods
     /// <summary>
-    /// 
+    /// Initializes the play screen.
     /// </summary>
     protected virtual void Awake() {
+        adsManager = AdsManager.Instance;
         levelReport = new LevelReport {
             screen = this,
             timeReward = -1
         };
 
-        skybox = skyboxes[Random.Range(0, skyboxes.Length)];
-
         mainCamera.gameObject.SetActive(true);
-        playerCamera.gameObject.SetActive(false);
+        playerCamera.gameObject.SetActive(false); 
     }
 
     /// <summary>
-    /// 
+    /// Resets the play screen when it is enabled.
     /// </summary>
     private void OnEnable() {
         inputObserver.OnStartPlayKeyUp.AddListener(LookForBombs);
-
-        /*airCamera.gameObject.SetActive(airView);
-        playerCamera.gameObject.SetActive(!airView && !player.IsStunned);
-        mainCamera.gameObject.SetActive(!airView && player.IsStunned);*/
     }
     #endregion
 
     #region Public methods
-
+    /// <summary>
+    /// Starts the play session.
+    /// </summary>
+    /// <param name="thePlayer"></param>
     public virtual void Play(PlayObject thePlayer) {
         player = thePlayer;
         airView = false;
+        playEnded = false;
+
+        playerControls = player.GetComponent<SimpleCharacterControl>();
+        playerControls.ControlsCamera = playerCamera;
 
         player.transform.parent = stage;
         player.transform.localPosition = initialPlayerPosition;
@@ -314,20 +306,14 @@ public class PlayScreen : GameScreen {
         levelReport.player = player;
         levelReport.levelSuccess = false;
 
-        playerCamera.transform.parent = player.transform;
-        playerCamera.transform.localPosition = playerCameraPosition;
-        playerCamera.transform.localEulerAngles = playerCameraRotation;
+        playerCamera.TransformToTrack = player.transform;
 
         if (Application.isMobilePlatform) {
-            player.GetComponent<SimpleCharacterControl>().VirtualControls = virtualControls;
+            playerControls.VirtualControls = virtualControls;
         }
 
         Pause = true;
-
-        if (skybox != null) {
-            RenderSettings.skybox = skybox;
-        }
-
+        
         player.Show(false);
     }
 
@@ -339,22 +325,25 @@ public class PlayScreen : GameScreen {
         StopAllCoroutines();
 
         pause = false;
+        playEnded = true;
 
         inputObserver.IsEnabled = false;
 
+        audioManger.StopMusic();
+
         levelReport.levelSuccess = levelSuccess;
         levelReport.timeReward = -1;
-        levelReport.levelEndReward = levelSuccess ?
-            levelSuccessReward : levelFailedReward;
+        levelReport.levelEndReward = 
+            levelSuccess? levelSuccessReward : 0;
 
         levelReport.totalReward =
             levelReport.levelEndReward + levelReport.moneyCollected;
 
-        playerCamera.transform.parent = transform;
-        playerCamera.transform.position = mainCamera.transform.position;
-
         endlevelInfoBox.AirView = airView;
-        endlevelInfoBox.ShowInfo(levelReport);
+
+        //endlevelInfoBox.ShowInfo(levelReport);
+
+        playLevelInfoBox.SetActive(false);
 
         if (levelSuccess) {
             audioManger.PlayEffect(levelSuccessSound);
@@ -365,25 +354,15 @@ public class PlayScreen : GameScreen {
             mainCamera.gameObject.SetActive(true);
         }
 
-        EnableInput(false);
-        
-        OnShowEndLevelInfo.Invoke();
-    }
+        if (Time.time - gameManager.LastInterstitialTime >= timeBetweenInterstials) {
+            adsManager.OnCloseInterstitial += ContinueAfterInterstitial;
 
-    /// <summary>
-    /// It truns the roulette.
-    /// </summary>
-    public void SpinRoulette() {
-        if (roulette.IsReady) {
-            roulette.SpinRoulete();
+            adsManager.ShowInterstitial();
         }
-    }
-
-    /// <summary>
-    /// It sends and event to request multiply reward.
-    /// </summary>
-    public void RequestMultiplyReward() {
-        OnRequestMultiplyReward.Invoke();
+        else {
+            endlevelInfoBox.ShowInfo(levelReport);
+            OnShowEndLevelInfo.Invoke();
+        }
     }
 
     /// <summary>
@@ -396,6 +375,9 @@ public class PlayScreen : GameScreen {
         levelReport.timeReward *= multiplier;
         levelReport.totalReward *= multiplier;
 
+        //When the player multiplies the reward, it resets the last interstitial time to the current time.
+        gameManager.LastInterstitialTime = Time.time;
+
         endlevelInfoBox.ShowInfo(levelReport);
     }
 
@@ -404,7 +386,7 @@ public class PlayScreen : GameScreen {
     /// </summary>
     /// <param name="replayLevel">True if the player wants to replay the level after getting the reward.</param>
     public void EndLevel(bool replayLevel) {
-        playLevelInfoBox.SetActive(false);
+        //playLevelInfoBox.SetActive(false);
         endlevelInfoBox.gameObject.SetActive(false);
 
         OnEndLevel.Invoke(levelReport);
@@ -430,15 +412,6 @@ public class PlayScreen : GameScreen {
     public void ReequestPowerUpVideo() {
         OnRequestPowerUpVideo.Invoke();
     }
-
-    /*public void UsePowerUp(PlayObject powerUp) {
-        bombsMarkCount = Mathf.FloorToInt(BombsCount * powerUpMultiplier);
-        //bombsMarkCount = Mathf.CeilToInt(BombsCount * powerUpMultiplier);
-
-        Destroy(powerUp.gameObject);
-
-        Pause = false;
-    }*/
 
     /// <summary>
     /// When a tile is exposed, it look for bombs in
@@ -543,6 +516,8 @@ public class PlayScreen : GameScreen {
     public void ExplodeBomb(Bomb bomb) {
         bomb.TurnOffBomb(2.4f);
 
+        Handheld.Vibrate();
+
         Invoke(nameof(StunPlayer), .5f);
         Invoke(nameof(CheckContinues), 2.5f);
 
@@ -554,44 +529,13 @@ public class PlayScreen : GameScreen {
     /// tile has a bomb.
     /// </summary>
     public void CheckCountry() {
+        EnableInput(false);
         StopAllCoroutines();
         StartCoroutine(ExposeAllTiles());
-    }
-    #endregion
 
-    #region Protected methods
-    /// <summary>
-    /// If the player falls to the deep, it puts the player
-    /// on the initial player position.
-    /// </summary
-    ///  
-    /// +
-    ///  >
-    protected void CheckPlayerPosition() {
-        if (player.transform.position.y < 0) {
-            player.transform.position = initialPlayerPosition;
-            player.transform.rotation = Quaternion.identity;
-        }
+        //playerControls.OnExitTile.RemoveListener(ResetPlayerPosition);
     }
 
-    /// <summary>
-    /// It checks if the player has used all continues.
-    /// </summary>
-    protected void CheckContinues() {
-        Pause = true;
-
-        if (usedContinues < continues) {
-            usedContinues++;
-
-            continueWindow.Open();
-        }
-        else {
-            CheckCountry();
-        }
-    }
-    #endregion
-
-    #region Private methods
     /// <summary>
     /// 
     /// </summary>
@@ -606,7 +550,7 @@ public class PlayScreen : GameScreen {
     /// It enables or disables the listeners of the InputObserver.
     /// </summary>
     /// <param name="enable">If true, it enables the listeners.</param>
-    private void EnableInput(bool enable) {
+    public void EnableInput(bool enable) {
         if (Application.isMobilePlatform) {
             virtualControls.gameObject.SetActive(enable);
         }
@@ -635,13 +579,56 @@ public class PlayScreen : GameScreen {
             inputObserver.OnPauseKeyUp.RemoveAllListeners();
         }
     }
+    #endregion
 
+    #region Protected methods
+    /// <summary>
+    /// It checks if the player has used all continues.
+    /// </summary>
+    protected void CheckContinues() {
+        Pause = true;
+
+        if (usedContinues < continues) {
+            usedContinues++;
+
+            continueWindow.Open();
+        }
+        else {
+            CheckCountry();
+        }
+    }
+
+    /// <summary>
+    /// Checks if the player is out of the country and resets its position.
+    /// </summary>
+    protected void CheckPlayerPosition() {
+        if (player.transform.localPosition.y < 0f) {
+            player.transform.localPosition = initialPlayerPosition;
+            player.transform.localRotation = Quaternion.identity;
+        }
+    }
+    #endregion
+
+    #region Private methods
     /// <summary>
     /// It stuns the palyer.
     /// </summary>
     private void StunPlayer() {
         player.Stun(true);
     }
+
+    /// <summary>
+    /// Continues the game after the interstitial ad is closed.
+    /// </summary>
+    private void ContinueAfterInterstitial() {
+        adsManager.OnCloseInterstitial -= ContinueAfterInterstitial;
+        
+        gameManager.LastInterstitialTime = Time.time;
+
+        endlevelInfoBox.ShowInfo(levelReport);
+        OnShowEndLevelInfo.Invoke();
+    }
+
     #endregion
 
     #region Coroutines
@@ -652,8 +639,8 @@ public class PlayScreen : GameScreen {
     protected IEnumerator<WaitForSeconds> SetPlayScreen() {
         int bombs = bombsCount;
         Tile currentTile;
-        Tile[] tilePrefabs = 
-            tileThemes[Random.Range(0, tileThemes.Length)].TilePrefabs;
+        TileTheme tileTheme = tileThemes[Random.Range(0, tileThemes.Length)];
+        Tile[] tilePrefabs = tileTheme.TilePrefabs;
         Vector2 bombCoords = new Vector2(
             Random.Range(0, tilesBySide), Random.Range(0, tilesBySide));
         Vector3 currentTilePosition = new Vector3(
@@ -661,13 +648,11 @@ public class PlayScreen : GameScreen {
             initialTilePosition.y,
             initialTilePosition.z);
 
+        RenderSettings.skybox = skyboxes[Random.Range(0, skyboxes.Length)];
 
         while (pause) {
-            yield return null;// new WaitForSeconds(1f);
+            yield return null;
         }
-
-        //player.EnableControls = false;
-        //startlevelInfoBox.ShowInfo(true);
 
         mainCamera.gameObject.SetActive(true);
 
@@ -738,13 +723,7 @@ public class PlayScreen : GameScreen {
     /// <summary>
     /// Once per second it checks the player position.
     /// </summary>
-    protected virtual IEnumerator Play() {
-        while (!pause) {
-            CheckPlayerPosition();
-
-            yield return new WaitForSeconds(1f);
-        }
-    }
+    protected abstract IEnumerator Play();
 
     /// <summary>
     /// It exposes all unmarked tiles, if any unmarked tile
@@ -758,7 +737,6 @@ public class PlayScreen : GameScreen {
             tile.HighLighted = false;
 
             if (!tile.IsMarked && tile.HasBomb) {
-                //tilesWithBomb.Add(tile);
                 if (bombFound == false) {
                     bombFound = true;
                 }
@@ -781,12 +759,6 @@ public class PlayScreen : GameScreen {
         }
 
         foreach (Tile tile in country) {
-            /*if (tile.IsExposed || !tile.IsMarked) {
-                tile.ShowBody(!bombFound);
-            }
-            else if (tile.IsMarked && !tile.HasBomb) {
-                tile.ShowBody(true);
-            }*/
             if (bombFound && !tile.HasBomb) {
                 ExposeTile(tile);
 
@@ -813,8 +785,6 @@ public class PlayScreen : GameScreen {
     /// <param name="replayLevel">True if the player wants to replay the level after resetting it.</param>
     /// <returns>The wait time to destroy the next tile.</returns>
     private IEnumerator ResetPlayScreen(bool replayLevel) {
-        //float deltaLoadTime = loadTime / tilesCount;
-
         yield return new WaitForSeconds(deltaLoadTime);
 
         pause = false;
@@ -855,17 +825,12 @@ public class PlayScreen : GameScreen {
             }
         }
 
-        //endlevelInfoBox.ShowInfo(levelReport);
-        //endlevelInfoBox.gameObject.SetActive(false);
+        //Destroy(environment);
 
         if (replayLevel) {
-            skybox = null;
-
             OnRequestReplay.Invoke();
         }
         else {
-            skybox = skyboxes[Random.Range(0, skyboxes.Length)];
-
             OnHideEndLevelInfo.Invoke();
         }
     }

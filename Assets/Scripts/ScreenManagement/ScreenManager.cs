@@ -1,5 +1,4 @@
 using System;
-//using UnityEditor.Media;
 using UnityEngine;
 
 public class ScreenManager : MonoBehaviour {
@@ -17,11 +16,13 @@ public class ScreenManager : MonoBehaviour {
     #endregion
 
     #region Private fields
-    //private PlayObject selectedPlayer;
-	//private PlayScreen selectedPlayScreen;
-	#endregion
+#if UNITY_ANDROID
+    private AdsManager adsManager;
+#endif
+    #endregion
 
-	#region Properties
+
+    #region Properties
     #endregion
 
     #region Events
@@ -30,10 +31,12 @@ public class ScreenManager : MonoBehaviour {
     #endregion
 
     #region Unity methods
-    /*public void Awake() {
-        selectedPlayScreen = arcadeScreen[0];
-    }*/
-    #endregion
+#if UNITY_ANDROID
+    public void Awake() {
+        adsManager = AdsManager.Instance;
+    }
+#endif
+#endregion
 
     #region Public methods
     /// <summary>
@@ -43,10 +46,6 @@ public class ScreenManager : MonoBehaviour {
     public void LoadStatus(GameStatus status) {
         GameStatus.ChallengeData challengeData = status.challengeData;
         DateTime now = DateTime.Now;
-
-        /*arcadeScreen.AirView = status.airView;
-        challengeScreen.AirView = status.airView;
-        classicScreen.AirView = status.airView;*/
 
         if (now.Day > challengeData.day ||
             now.Month > challengeData.month ||
@@ -65,10 +64,13 @@ public class ScreenManager : MonoBehaviour {
     /// <param name="level">The game level.</param>
     public void PlayArcade(PlayObject player, int level) {
         arcadeScreen.CurrentLevel = level;
-
+        
         ShowScreen(arcadeScreen.ScreenName);
 
         arcadeScreen.Play(player);
+#if UNITY_ANDROID
+        adsManager.HideBottomBanner();
+#endif
     }
 
     /// <summary>
@@ -76,11 +78,12 @@ public class ScreenManager : MonoBehaviour {
     /// </summary>
     /// <param name="player">The player avatar.</param>
     public void PlayClassic(PlayObject player) {
-        //classicScreen.TilesBySide = tilesBySide;
-
         ShowScreen(classicScreen.ScreenName);
 
         classicScreen.Play(player);
+#if UNITY_ANDROID
+        adsManager.HideBottomBanner();
+#endif
     }
 
     /// <summary>
@@ -91,6 +94,9 @@ public class ScreenManager : MonoBehaviour {
         ShowScreen(challengeScreen.ScreenName);
 
         challengeScreen.Play(player);
+#if UNITY_ANDROID
+        adsManager.HideBottomBanner();
+#endif
     }
 
     /// <summary>
@@ -98,6 +104,10 @@ public class ScreenManager : MonoBehaviour {
     /// </summary>
     public void ShowMainScreen() {
         ShowScreen(mainScreen.ScreenName);
+
+#if UNITY_ANDROID
+        adsManager.ShowBottomBanner();
+#endif
     }
     #endregion
 

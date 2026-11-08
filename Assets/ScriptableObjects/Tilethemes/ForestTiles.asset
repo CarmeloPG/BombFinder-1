@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe2833f5dcde3c44bcfbff2d7e672ff, type: 3}
   m_Name: ForestTiles
   m_EditorClassIdentifier: 
+  environment: {fileID: 8451091596256997790, guid: 4fa86e74e25625d449c54f2837ff3ae9,
+    type: 3}
+  skybox: {fileID: 2100000, guid: bbbcd551076325545ba102ba8c308520, type: 2}
   tilePrefabs:
   - {fileID: 3309327725046808322, guid: cdbe3b10596a144459f768fa320a7a5c, type: 3}
   - {fileID: 3434756223226949038, guid: d9cc0c3b24a93794c82f44c290ddef39, type: 3}

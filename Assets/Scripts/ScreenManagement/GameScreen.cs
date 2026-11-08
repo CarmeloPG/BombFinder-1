@@ -30,9 +30,9 @@ public class GameScreen : MonoBehaviour {
     #endregion
 
     #region Private fields
-    private float
+    /*private float
         skyRotation,
-        deltaSkyRotation;
+        deltaSkyRotation;*/
     #endregion
 
     #region Properties

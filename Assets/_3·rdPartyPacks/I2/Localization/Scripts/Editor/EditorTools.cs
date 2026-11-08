@@ -426,8 +426,8 @@ namespace I2.Loc
 
 		public static IEnumerable<GameObject> SceneRoots()
 		{
-			var prop = new HierarchyProperty(HierarchyType.GameObjects);
-			var expanded = new int[0];
+			var prop = new HierarchyIterator(HierarchyType.GameObjects);
+			var expanded = new EntityId[0];
 			while (prop.Next(expanded)) {
 				yield return prop.pptrValue as GameObject;
 			}

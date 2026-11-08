@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 public class VirtualControls : MonoBehaviour {
@@ -10,33 +9,39 @@ public class VirtualControls : MonoBehaviour {
 	[SerializeField]
 	private InputObserver inputObserver;
 	[SerializeField]
+	private Joystick moveJoystick;
+	[SerializeField]
+	private Joystick lookJoystick;
+    [SerializeField]
 	private Toggle changeViewToggle;
 	[SerializeField]
 	private Toggle runToggle;
+	[SerializeField]
+	private GameObject playerControls;
 	#endregion
 
 	#region Private fields
 	private bool run;
-	private float
-		verticlaAxis,
-		horizontalAxis;
+	/*private Vector2
+		move,
+		look;*/
 	#endregion
 
 	#region Properties
 	/// <summary>
 	/// 
 	/// </summary>
-	public float VerticalAxis {
-		get => verticlaAxis;
-		set => verticlaAxis = value;
+	public Vector2 Move {
+		get => moveJoystick.Direction;//move;
+		//set => move = value;
 	}
 
 	/// <summary>
 	/// 
 	/// </summary>
-	public float HorizontalAxis {
-		get => horizontalAxis;
-		set =>horizontalAxis = value;
+	public Vector2 Look {
+		get => lookJoystick.Direction;//look;
+		//set => look = value;
 	}
 
 	/// <summary>
@@ -45,6 +50,13 @@ public class VirtualControls : MonoBehaviour {
 	public bool Run {
 		get => run;
 		set => run = value;
+	}
+
+	/// <summary>
+	/// 
+	/// </summary>
+	public bool IsEnabled {
+		set => playerControls.SetActive(value);
 	}
 	#endregion
 
@@ -57,17 +69,21 @@ public class VirtualControls : MonoBehaviour {
 	/// <summary>
 	/// 
 	/// </summary>
-	private void Start() {
-		run = false;
-		verticlaAxis = 0f;
-		horizontalAxis = 0f;
-	}
+	/*private void Start() {
+		//run = false;
+
+		//runToggle.SetIsOnWithoutNotify(false);
+        //move = Vector2.zero;
+        //look = Vector2.zero;
+    }*/
 
 	/// <summary>
 	/// 
 	/// </summary>
     private void OnEnable() {
-		Invoke(nameof(ResetToggles), .1f);
+		run = false;
+
+        Invoke(nameof(ResetToggles), .5f);
     }
     #endregion
 

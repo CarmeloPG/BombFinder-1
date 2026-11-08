@@ -133,8 +133,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Play
-      - Jugar
+      - Classic mode
+      - "Modo cl\xE1sico"
       Flags: 0000
       Languages_Touch: []
     - Term: Label_PortugueseButton
@@ -1296,8 +1296,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Fortune spin wheel
-      - Ruleta de la fortuna
+      - MultiplyReward
+      - Multiplicar recompensa
       Flags: 0000
       Languages_Touch: []
     - Term: Roulette
@@ -1721,8 +1721,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Rotate avatar
-      - Rotar avatar
+      - Rotate camera
+      - "Rotar c\xE1mara"
       Flags: 0000
       Languages_Touch: []
     - Term: Msg_Update
@@ -1739,6 +1739,14 @@ MonoBehaviour:
       Languages:
       - Update
       - Actualizar
+      Flags: 0000
+      Languages_Touch: []
+    - Term: RotateCamera
+      TermType: 0
+      Description: 
+      Languages:
+      - Rotate camera
+      - "Rotar c\xE1mara"
       Flags: 0000
       Languages_Touch: []
     CaseInsensitiveTerms: 0

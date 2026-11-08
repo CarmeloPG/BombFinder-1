@@ -1,13 +1,13 @@
-#if UNITY_ANDROID
+//#if UNITY_ANDROID
 using Google.Play.AppUpdate;
 using Google.Play.Common;
 using System.Collections;
-using Unity.Collections;
-#endif
+//using Unity.Collections;
+//#endif
 using UnityEngine;
 
 public class PlayStoreUpdateChecker : MonoBehaviour {
-#if UNITY_ANDROID
+//#if UNITY_ANDROID
     #region Readonly fields
     #endregion
 
@@ -30,13 +30,16 @@ public class PlayStoreUpdateChecker : MonoBehaviour {
 
     #region Unity methods
     /// <summary>
-    /// 
+    /// Initializes the update checker.
     /// </summary>
     private void Start() {
-        if (!Application.isEditor) {
+        if (!Application.isEditor && Application.internetReachability != NetworkReachability.NotReachable) {
             appUpdateManager = new AppUpdateManager();
 
             StartCoroutine(CheckForUpdate());
+        }
+        else {
+            loadingSceneManager.LoadMainScene();
         }
     }
     #endregion
@@ -52,9 +55,9 @@ public class PlayStoreUpdateChecker : MonoBehaviour {
 
     #region Coroutines
     /// <summary>
-    /// 
+    /// Checks for available updates.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>The coroutine enumerator.</returns>
     private IEnumerator CheckForUpdate() {
         bool updateAvailable = false;
         PlayAsyncOperation<AppUpdateInfo, AppUpdateErrorCode> appUpdateInfoOperation =
@@ -74,8 +77,6 @@ public class PlayStoreUpdateChecker : MonoBehaviour {
                     appUpdateInfoResult.UpdateAvailability == UpdateAvailability.UpdateAvailable
                     && appUpdateInfoResult.AppUpdateStatus != AppUpdateStatus.Installed;
             }
-            
-            
         }
 
         if (updateAvailable) {
@@ -86,5 +87,5 @@ public class PlayStoreUpdateChecker : MonoBehaviour {
         }
     }
     #endregion
-#endif
+//#endif
 }

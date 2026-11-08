@@ -650,20 +650,23 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 4
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 00000000
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -862,8 +865,7 @@ MonoBehaviour:
   levelText: {fileID: 3592973325408950809}
   playerMoneyInfo: {fileID: 6727606236943798574}
   playerAvatarPlace: {fileID: 3042587429120642077}
-  playerAvatarGround: {fileID: 2390508738873836676}
-  skybox: {fileID: 2100000, guid: fccbea1ade85a4c4fbadc1211f820160, type: 2}
+  skybox: {fileID: 2100000, guid: 67950864b84c5db4f9eee7ca51c85571, type: 2}
   changeAvatarSound: {fileID: 8300000, guid: 78e2b06b7b4a3d947bf998405b60e506, type: 3}
   OnBuyPlayObject:
     m_PersistentCalls:
@@ -1459,15 +1461,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8400429650247731738}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 12
   m_Type: 1
-  m_Shape: 0
   m_Color: {r: 1, g: 0.99787915, b: 0.8254717, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
@@ -1511,8 +1512,12 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
 --- !u!1 &8407214708394533428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1561,7 +1566,7 @@ PrefabInstance:
     - target: {fileID: 664729819112166408, guid: 61343e9eebb09954eb18c2093acb833f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 664729819112166410, guid: 61343e9eebb09954eb18c2093acb833f,
         type: 3}
@@ -1646,12 +1651,12 @@ PrefabInstance:
     - target: {fileID: 664729819112166411, guid: 61343e9eebb09954eb18c2093acb833f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 664729819112166411, guid: 61343e9eebb09954eb18c2093acb833f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 664729819112166411, guid: 61343e9eebb09954eb18c2093acb833f,
         type: 3}
@@ -1661,7 +1666,7 @@ PrefabInstance:
     - target: {fileID: 664729819112166411, guid: 61343e9eebb09954eb18c2093acb833f,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 664729819112166411, guid: 61343e9eebb09954eb18c2093acb833f,
         type: 3}
@@ -1941,7 +1946,7 @@ PrefabInstance:
     - target: {fileID: 664729819112166411, guid: 61343e9eebb09954eb18c2093acb833f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.65
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 664729819112166411, guid: 61343e9eebb09954eb18c2093acb833f,
         type: 3}
@@ -1951,7 +1956,7 @@ PrefabInstance:
     - target: {fileID: 664729819112166411, guid: 61343e9eebb09954eb18c2093acb833f,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.35
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 664729819112166411, guid: 61343e9eebb09954eb18c2093acb833f,
         type: 3}
@@ -2469,7 +2474,7 @@ PrefabInstance:
     - target: {fileID: 664729819112166408, guid: 61343e9eebb09954eb18c2093acb833f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 664729819112166410, guid: 61343e9eebb09954eb18c2093acb833f,
         type: 3}

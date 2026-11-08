@@ -9,6 +9,10 @@ public class TileTheme : ScriptableObject {
     #endregion
 
     #region Serialize fields
+    /*[SerializeField]
+    private GameObject environment;
+    [SerializeField]
+    private Material skybox;*/
     [SerializeField]
     private Tile[] tilePrefabs;
     #endregion
@@ -17,6 +21,14 @@ public class TileTheme : ScriptableObject {
     #endregion
 
     #region Properties
+    /*public GameObject Environment {
+        get => environment;
+    }
+
+    public Material Skybox {
+        get => skybox;
+    }*/
+
     public Tile[] TilePrefabs {
         get => tilePrefabs;
     }

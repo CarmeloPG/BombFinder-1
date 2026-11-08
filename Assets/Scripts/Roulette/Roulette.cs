@@ -33,29 +33,12 @@ public class Roulette : MonoBehaviour {
     private AudioClip winSound;
     #endregion
 
-    #region Private fields
+    #region Private 
+    private AdsManager adsManager;
     #endregion
 
     #region Properties
-    public bool IsStop {
-        get {
-            if (Mathf.Abs(pivot.angularVelocity) < 1.0f) {
-                pivot.angularVelocity = .0f;
-            }
-
-            return pivot.angularVelocity == .0f;
-        }
-    }
-
-    /// <summary>
-    /// The roulette is ready when the player can spin it.
-    /// </summary>
-    public bool IsReady {
-        get =>
-            gameObject.activeInHierarchy &&
-            gameObject.activeSelf &&
-            IsStop;
-    }
+    
     #endregion
 
     #region Events
@@ -66,7 +49,17 @@ public class Roulette : MonoBehaviour {
     public UnityEvent<int> OnEndSpinRoulette;
     #endregion
 
-    #region Unity methods
+    #region Unity 
+    /// <summary>
+    /// Get the instance of AdsManager when the script is loaded.
+    /// </summary>
+    public void Awake() {
+        adsManager = AdsManager.Instance;
+    }
+
+    /// <summary>
+    /// Reset the roulette to its initial state when it is enabled.
+    /// </summary>
     private void OnEnable() {
         pivot.transform.localRotation = Quaternion.identity;
 
@@ -81,23 +74,54 @@ public class Roulette : MonoBehaviour {
     #endregion
 
     #region Public methods
+    public void ViewVideo() {
+        if (IsReady()) {
+            adsManager.OnEarnReward += SpinRoulete;
+
+            adsManager.ShowRewardedAd();
+        }
+    }
+
     /// <summary>
     /// 
     /// </summary>
     public void SpinRoulete() {
-        if (gameObject.activeSelf && gameObject.activeInHierarchy) {
-            pivot.AddTorque(Random.Range(minSpinForce, maxSpinForce));
-            audioManager.PlayEffect(spinSound);
+        adsManager.OnEarnReward -= SpinRoulete;
 
-            StartCoroutine(CheckResult());
-        }
+        pivot.AddTorque(Random.Range(minSpinForce, maxSpinForce));
+        audioManager.PlayEffect(spinSound);
+
+        StartCoroutine(CheckResult());
     }
     #endregion
 
     #region Protected methods
     #endregion
 
-    #region Private methods
+    #region Private 
+    /// <summary>
+    /// Check if the roulette is stopped. 
+    /// If it is, set the angular velocity to 0. 
+    /// </summary>
+    /// <returns>True if the roulette is stopped, false otherwise.</returns>
+    private bool IsStop() {
+        if (Mathf.Abs(pivot.angularVelocity) < 3.0f) {
+            pivot.angularVelocity = .0f;
+        }
+
+        return pivot.angularVelocity == .0f;
+    }
+
+    /// <summary>
+    /// Check if the roulette is ready for spin.
+    /// </summary>
+    /// <returns>True if the roulette is ready, false otherwise.</returns>
+    private bool IsReady() {
+        return 
+            gameObject.activeInHierarchy &&
+            gameObject.activeSelf &&
+            IsStop();
+    }
     #endregion
 
     #region Coroutines
@@ -111,7 +135,7 @@ public class Roulette : MonoBehaviour {
 
         yield return new WaitForSeconds(.1f);
 
-        while (!IsStop) {
+        while (!IsStop()) {
             /*for (int i = 0; i < rouletteItems.Length; i++) {
                 rouletteItems[i].transform.rotation = Quaternion.identity;
             }*/

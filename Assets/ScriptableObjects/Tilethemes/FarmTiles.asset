@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe2833f5dcde3c44bcfbff2d7e672ff, type: 3}
   m_Name: FarmTiles
   m_EditorClassIdentifier: 
+  environment: {fileID: 2394199487479994056, guid: 515bbed68e6a5444781851219a275d28,
+    type: 3}
+  skybox: {fileID: 2100000, guid: 56113b3b655ab7349bab4d7d405c258a, type: 2}
   tilePrefabs:
   - {fileID: 5202570449984959361, guid: 4d9d13d8a25704148a28c878016efdcb, type: 3}
   - {fileID: 5636757623202646174, guid: 8cb66b2da5886ad4fa8cac860a8a77ff, type: 3}

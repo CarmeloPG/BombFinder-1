@@ -49,6 +49,9 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 3
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -161,7 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4500357325780474507}
   - component: {fileID: 5228218861946563600}
-  - component: {fileID: 6296739425109780416}
+  - component: {fileID: 3630111398201949387}
   m_Layer: 0
   m_Name: MushroomMon
   m_TagString: Untagged
@@ -207,9 +210,9 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9495116, y: 1.7816606, z: 2.2126374}
   m_Center: {x: -0.0018265098, y: 0.8853613, z: 0.006867014}
---- !u!95 &6296739425109780416
+--- !u!95 &3630111398201949387
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -223,6 +226,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -386,12 +390,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_animator
       value: 
-      objectReference: {fileID: 6296739425109780416}
+      objectReference: {fileID: 3630111398201949387}
     - target: {fileID: 7994452942161289748, guid: 63011452985f5664eb0ce3316d32d3fa,
         type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 6296739425109780416}
+      objectReference: {fileID: 3630111398201949387}
     - target: {fileID: 7994452942161289748, guid: 63011452985f5664eb0ce3316d32d3fa,
         type: 3}
       propertyPath: data.icon

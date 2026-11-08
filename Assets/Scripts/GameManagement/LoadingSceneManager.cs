@@ -24,11 +24,11 @@ public class LoadingSceneManager : MonoBehaviour {
     #endregion
 
     #region Unity methods
-#if !UNITY_ANDROID || UNITY_EDITOR
+/*#if !UNITY_ANDROID || UNITY_EDITOR
     private void Awake() {
         Invoke(nameof(LoadMainScene), loadDelay);
     }
-#endif
+#endif*/
 	#endregion
 
 
@@ -56,12 +56,11 @@ public class LoadingSceneManager : MonoBehaviour {
 	/// 
 	/// </summary>
 	public void LoadMainScene() {
-#if UNITY_ANDROID
+//#if UNITY_ANDROID
 		if (!bomb.activeSelf) {
 			bomb.SetActive(true);
 		}
-		
-#endif
+//#endif
 
         StartCoroutine(LoadSceneAsync(mainSceneName));
     }
@@ -71,7 +70,9 @@ public class LoadingSceneManager : MonoBehaviour {
     private IEnumerator LoadSceneAsync(string scene) {
 		var asyncOperation = SceneManager.LoadSceneAsync(scene);
 		
-		if (asyncOperation != null) {
+		yield return new WaitForSecondsRealtime(loadDelay);
+
+        if (asyncOperation != null) {
 			float loadProgress = 0f;
 
 			asyncOperation.allowSceneActivation = false;

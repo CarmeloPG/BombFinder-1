@@ -35,9 +35,9 @@ public class MainScreen : GameScreen {
     [SerializeField]
     [Tooltip("Tranform parent of the player avatar in the main scene.")]
     private Transform playerAvatarPlace;
-    [Tooltip("Ground on which the avatar stands.")]
+    /**[Tooltip("Ground on which the avatar stands.")]
     [SerializeField]
-    private BoxCollider playerAvatarGround;
+    private BoxCollider playerAvatarGround;*/
     [Tooltip("The skybox in the main scene.")]
     [SerializeField]
     private Material skybox;
@@ -70,7 +70,7 @@ public class MainScreen : GameScreen {
     //public UnityEvent<PortalUser> OnAuthenticateUser;
 #endregion
 
-#region Unity methods
+    #region Unity methods
 #if !UNITY_STANDALONE_WIN
     private void Awake() {
         exitButton.gameObject.SetActive(false);
@@ -171,9 +171,9 @@ public class MainScreen : GameScreen {
     /// When the player chages the avatar, it creates
     /// a copy of new avatar and puts it in the avatar transform.
     /// </summary>
-    /// <param name="playObjectData">The data of the new avatar.</param>
-    public void ChangePlayerAvatar(PlayObjectData playObjectData) {
-        StartCoroutine(ChangeAvatar(playObjectData));
+    /// <param name="avatarData">The data of the new avatar.</param>
+    public void ChangePlayerAvatar(PlayObjectData avatarData) {
+        StartCoroutine(ChangeAvatar(avatarData));
     }
 
 
@@ -248,15 +248,17 @@ public class MainScreen : GameScreen {
         string avatarName = avatarData.Identifier;
 
         if (playerAvatar != null && !playerAvatar.name.Equals(avatarName)) {
-            playerAvatarGround.isTrigger = true;
+            //playerAvatarGround.isTrigger = true;
 
-            audioManager.PlayEffect(changeAvatarSound);
+            //audioManager.PlayEffect(changeAvatarSound);
 
-            yield return new WaitForSeconds(.5f);
+            //yield return new WaitForSeconds(.5f);
 
-            playerAvatarGround.isTrigger = false;
+            //playerAvatarGround.isTrigger = false;
 
             DestroyImmediate(playerAvatar);
+
+            yield return null;
         }
 
         if (playerAvatar == null) {

@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe2833f5dcde3c44bcfbff2d7e672ff, type: 3}
   m_Name: DesertTiles
   m_EditorClassIdentifier: 
+  environment: {fileID: 2929160024315670024, guid: 78009c97ac804db45b6d8560e28cff8e,
+    type: 3}
+  skybox: {fileID: 2100000, guid: 6225fa8890cf025489e57d3aa1d87260, type: 2}
   tilePrefabs:
   - {fileID: 2822856263473218053, guid: d39bf559660aa0743859be0cf46a8c1d, type: 3}
   - {fileID: 1074710846077389654, guid: 6e3404de7da567a4b933cb3e5ea8f6e0, type: 3}

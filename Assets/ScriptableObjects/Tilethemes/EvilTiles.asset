@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe2833f5dcde3c44bcfbff2d7e672ff, type: 3}
   m_Name: EvilTiles
   m_EditorClassIdentifier: 
+  environment: {fileID: 5023878490033002447, guid: 11a16ea1d96fdc84fbbe41469121d2d2,
+    type: 3}
+  skybox: {fileID: 2100000, guid: ddbcbb3899687ea469ed4a5fce1532df, type: 2}
   tilePrefabs:
   - {fileID: 784207167957959840, guid: 6bda14f68c81e72458425a1676856c2f, type: 3}
   - {fileID: 4023777498752442291, guid: f24e416e263159745908265c3fb11639, type: 3}

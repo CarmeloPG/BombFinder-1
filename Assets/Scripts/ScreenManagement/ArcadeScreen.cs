@@ -1,16 +1,15 @@
-using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
-using System.Collections.Generic;
 using System.Collections;
-using System.Linq;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 
 /// <summary>
 /// Play Screen to arcade mode.
 /// 
 /// The game begins at level 1 with a field of 
-/// (minTilesBySide X TilesBySide) tiles and a bomb density 
+/// (minTilesBySide X minTilesBySide) tiles and a bomb density 
 /// of minBombDensity. When a level is succed, the bomb density
 /// increases by deltaBombDensity until it reaches a maximum of
 /// maxBombDensity. When the maximum bomb density is reached, 

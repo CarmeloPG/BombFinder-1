@@ -55,12 +55,13 @@ public class MoneyInfoBox : MonoBehaviour {
     }
 
     private void OnEnable() {
-        if (moneyAmount > 1000) {
+        ShowMoneyAmount(moneyDefinition.MoneyType, moneyAmount);
+        /*if (moneyAmount > 1000) {
             ShowMoneyAmount(moneyDefinition.MoneyType, moneyAmount);
         }
         else {
             ShowMoneyAmount(moneyDefinition.MoneyType, moneyAmount);
-        }
+        }*/
     }
     #endregion
 

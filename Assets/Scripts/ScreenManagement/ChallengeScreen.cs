@@ -137,27 +137,21 @@ public class ChallengeScreen : PlayScreen {
     /// <param name="levelSuccess"></param>
     public override void EndPlay(bool levelSuccess) {
         base.EndPlay(levelSuccess);
-
-        levelReport.moneyCollected *= dificultyIndex;
-        levelReport.levelEndReward *= dificultyIndex;
-        levelReport.totalReward *= dificultyIndex;
-
+        
         if (levelSuccess) {
             int timeReward = time * dificultyIndex;
 
+            levelReport.moneyCollected *= dificultyIndex;
+            levelReport.levelEndReward *= dificultyIndex;
+            levelReport.totalReward *= dificultyIndex;
             levelReport.timeReward = timeReward;
             levelReport.totalReward += timeReward;
 
             replayLevelButton.interactable = false;
+
+            endlevelInfoBox.ClearInfo();
+            endlevelInfoBox.ShowInfo(levelReport);
         }
-        /*else {
-            //levelReport.timeReward = 0;
-
-            replayLevelButton.interactable = true;
-        }*/
-
-        endlevelInfoBox.ClearInfo();
-        endlevelInfoBox.ShowInfo(levelReport);
     }
     #endregion
 
@@ -216,7 +210,7 @@ public class ChallengeScreen : PlayScreen {
     protected override IEnumerator Play() {
         do {
             if (!pause) {
-                CheckPlayerPosition();
+               CheckPlayerPosition();
 
                 timeDisplay.ShowTime(time);
 

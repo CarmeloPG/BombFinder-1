@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour {
 
     #region Private fields
     private GameStatus gameStatus;
+    private float lastInterstitialTime;
     #endregion
 
     #region Properties
@@ -64,6 +65,11 @@ public class GameManager : MonoBehaviour {
             SaveGame();
         }
     }
+    
+    public float LastInterstitialTime {
+        get => lastInterstitialTime;
+        set => lastInterstitialTime = value;
+    }
     #endregion
 
     #region Events
@@ -81,6 +87,7 @@ public class GameManager : MonoBehaviour {
     /// On awake, it loads the last saved status.
     /// </summary>
     private void Awake() {
+        lastInterstitialTime = 0f;
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
         LoadGameStatus();
@@ -219,11 +226,9 @@ public class GameManager : MonoBehaviour {
 
         if (string.IsNullOrEmpty(data)) {
             SaveGame();
-            //debugText.text += "New game\n";
         }
         else {
             JsonUtility.FromJsonOverwrite(data, gameStatus);
-            //debugText.text += "Old game\n";
         }
 
         OnLoadGameStatus.Invoke(gameStatus);

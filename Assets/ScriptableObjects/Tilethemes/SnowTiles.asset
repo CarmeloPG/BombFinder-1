@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe2833f5dcde3c44bcfbff2d7e672ff, type: 3}
   m_Name: SnowTiles
   m_EditorClassIdentifier: 
+  environment: {fileID: 5263355842552368148, guid: ff39ab7e7e936d949b157030ede67479,
+    type: 3}
+  skybox: {fileID: 2100000, guid: 9aa8ed67591432941bb76f12eb23ff91, type: 2}
   tilePrefabs:
   - {fileID: 5246265180215770123, guid: 6feaf87293c2ec745b5fc97f82818f97, type: 3}
   - {fileID: 8189921251381814364, guid: 2af161a597b361f4f9147013b902c0bc, type: 3}

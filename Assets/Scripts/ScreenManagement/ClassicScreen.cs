@@ -36,7 +36,6 @@ public class ClassicScreen : PlayScreen {
         base.Play(thePlayer);
 
         time = 0;
-        pause = false;
         country = new Tile[tilesBySide, tilesBySide];
 
         levelReport.levelPlayed = tilesBySide;
